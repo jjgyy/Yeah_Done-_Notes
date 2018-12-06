@@ -14,17 +14,8 @@ struct Note: Codable {
     
     var identifier = NSTimeIntervalSince1970
     var text: String
-    var fontSize: Float = 16.0
-    var color = NoteColor()
     var frame = NoteFrame()
-    
-    struct NoteColor: Codable {
-        var red: Float = Float()
-        var green: Float = Float()
-        var blue: Float = Float()
-        var alpha: Float = Float()
-    }
-    
+
     struct NoteFrame: Codable {
         var x: Float = Float()
         var y: Float = Float()
@@ -42,13 +33,8 @@ struct Note: Codable {
         self.frame.y = y
     }
     
-    init(text: String, fontSize: Float, red: Float, green: Float, blue: Float, alpha: Float, width: Float, height: Float, x: Float, y: Float) {
+    init(text: String, width: Float, height: Float, x: Float, y: Float) {
         self.text = text
-        self.fontSize = fontSize
-        self.color.red = red
-        self.color.green = green
-        self.color.blue = blue
-        self.color.alpha = alpha
         self.frame.width = width
         self.frame.height = height
         self.frame.x = x

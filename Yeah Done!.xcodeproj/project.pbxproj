@@ -15,6 +15,8 @@
 		18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C121B6AC0B0059A007 /* DragNoteView.swift */; };
 		18B287C421B6E4E70059A007 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C321B6E4E70059A007 /* Note.swift */; };
 		18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2EE21B8048F00C5C966 /* WallView.swift */; };
+		18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2F021B8F35600C5C966 /* Theme.swift */; };
+		18D7E2FB21B9424800C5C966 /* AllThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2FA21B9424800C5C966 /* AllThemes.swift */; };
 		18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E455EA21B77AEE00C9315D /* NoteWall.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		18B287C121B6AC0B0059A007 /* DragNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteView.swift; sourceTree = "<group>"; };
 		18B287C321B6E4E70059A007 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		18D7E2EE21B8048F00C5C966 /* WallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
+		18D7E2F021B8F35600C5C966 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		18D7E2FA21B9424800C5C966 /* AllThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllThemes.swift; sourceTree = "<group>"; };
 		18E455EA21B77AEE00C9315D /* NoteWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,13 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				180CDFFB21B653C000D8EC17 /* Main.storyboard */,
-				18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */,
-				18B287C121B6AC0B0059A007 /* DragNoteView.swift */,
-				18D7E2EE21B8048F00C5C966 /* WallView.swift */,
 				180CE00321B653C000D8EC17 /* Info.plist */,
+				18D7E2F321B91EDC00C5C966 /* Model */,
+				18D7E2F921B938A200C5C966 /* Controller and View */,
 				180CE00921B653D000D8EC17 /* Supporting Files */,
-				18B287C321B6E4E70059A007 /* Note.swift */,
-				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
 			);
 			path = "Yue Dong Note";
 			sourceTree = "<group>";
@@ -82,6 +83,35 @@
 				180CE00021B653C000D8EC17 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18D7E2F221B91EAC00C5C966 /* DragNoteWall */ = {
+			isa = PBXGroup;
+			children = (
+				18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */,
+				18B287C121B6AC0B0059A007 /* DragNoteView.swift */,
+				18D7E2EE21B8048F00C5C966 /* WallView.swift */,
+			);
+			path = DragNoteWall;
+			sourceTree = "<group>";
+		};
+		18D7E2F321B91EDC00C5C966 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18B287C321B6E4E70059A007 /* Note.swift */,
+				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
+				18D7E2F021B8F35600C5C966 /* Theme.swift */,
+				18D7E2FA21B9424800C5C966 /* AllThemes.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18D7E2F921B938A200C5C966 /* Controller and View */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E2F221B91EAC00C5C966 /* DragNoteWall */,
+			);
+			path = "Controller and View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B287C421B6E4E70059A007 /* Note.swift in Sources */,
+				18D7E2FB21B9424800C5C966 /* AllThemes.swift in Sources */,
 				18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */,
 				18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */,
 				180CDFF821B653C000D8EC17 /* AppDelegate.swift in Sources */,
 				18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */,
 				18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */,
+				18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

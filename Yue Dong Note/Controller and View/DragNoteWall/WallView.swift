@@ -15,18 +15,10 @@ class WallView: UIView {
         for view in subviews {
             if view is DragNoteView {
                 if (view as! DragNoteView).textView.isFirstResponder {
-                    endEditingThisDragNoteView(view as! DragNoteView)
+                    (view as! DragNoteView).endEditingText()
                 }
             }
         }
-    }
-    
-    func endEditingThisDragNoteView(_ view: DragNoteView) {
-        view.textView.resignFirstResponder()
-        view.textLabel.attributedText = view.textView.attributedText
-        view.textLabel.sizeToFit()
-        view.textView.isHidden = true
-        view.textLabel.isHidden = false
     }
 
 }

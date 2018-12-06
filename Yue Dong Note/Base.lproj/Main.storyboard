@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jRz-8X-hOy">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="jRz-8X-hOy" customClass="DragNoteViewController" customModule="Yue_Dong_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="WallView" customModule="Yue_Dong_Note" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m84-IG-BIz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-LO-FZ2">
-                                <rect key="frame" x="290" y="582" width="45" height="45"/>
+                                <rect key="frame" x="329" y="777" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="alh-d0-SEM"/>
                                     <constraint firstAttribute="height" constant="45" id="idc-p6-R6k"/>
@@ -37,9 +37,9 @@
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="trailing" secondItem="m84-IG-BIz" secondAttribute="trailing" id="77r-jp-rbz"/>
                             <constraint firstItem="m84-IG-BIz" firstAttribute="leading" secondItem="HUz-YP-ipm" secondAttribute="leading" id="Neh-m2-V7D"/>
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="bottom" secondItem="Gw6-LO-FZ2" secondAttribute="bottom" constant="40" id="Y0a-0a-9uw"/>
-                            <constraint firstItem="HUz-YP-ipm" firstAttribute="bottom" secondItem="m84-IG-BIz" secondAttribute="bottom" id="Z2Q-AD-lxM"/>
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="trailing" secondItem="Gw6-LO-FZ2" secondAttribute="trailing" constant="40" id="c3A-8q-Oph"/>
                             <constraint firstItem="m84-IG-BIz" firstAttribute="top" secondItem="M0W-Wr-Ban" secondAttribute="top" id="hxB-if-RVS"/>
+                            <constraint firstItem="m84-IG-BIz" firstAttribute="height" secondItem="M0W-Wr-Ban" secondAttribute="height" id="npQ-Jl-6dm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HUz-YP-ipm"/>
                     </view>
@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbK-Sa-Trp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1068" y="850.52473763118451"/>
+            <point key="canvasLocation" x="952" y="875"/>
         </scene>
     </scenes>
 </document>

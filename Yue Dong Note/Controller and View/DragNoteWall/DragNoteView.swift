@@ -12,17 +12,7 @@ class DragNoteView: UIView {
 
     var textLabel = UILabel()
     var textView = UITextView()
-    var noteFrame: CGRect {
-        get {
-            return frame
-        }
-        set {
-            frame = newValue
-            textLabel.frame.size.width = bounds.width - 36.0
-            textLabel.sizeToFit()
-            textLabel.frame.size.width = bounds.width - 36.0
-        }
-    }
+    var noteNail = UIImageView()
     private lazy var originalBounds = bounds
     private var redCorner = UIImageView()
     
@@ -31,7 +21,7 @@ class DragNoteView: UIView {
         super.init(frame: frame)
         addTextLabel()
         addTextView()
-        addBigHeaderNail()
+        addNoteNail()
         addShadow()
         addLongPressGestureRecognizer()
     }
@@ -50,16 +40,15 @@ class DragNoteView: UIView {
     //添加文字输入区
     func addTextView() {
         textView.frame = textLabel.frame
-        textView.backgroundColor = self.backgroundColor
+        textView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         addSubview(textView)
         textView.isHidden = true
     }
     
     //添加大头针图片
-    func addBigHeaderNail() {
-        let bigHeaderNailImage = UIImageView(image: UIImage(named: "bigHeaderNail"))
-        bigHeaderNailImage.frame = CGRect(x: 2.0, y: 4.0, width: 34.0, height: 26.0)
-        addSubview(bigHeaderNailImage)
+    func addNoteNail() {
+        noteNail.frame = CGRect(x: 2.0, y: 4.0, width: 36.0, height: 26.0)
+        addSubview(noteNail)
     }
     
     
@@ -70,7 +59,7 @@ class DragNoteView: UIView {
         layer.shadowRadius = 5;
     }
     
-    //添加长按识别器
+    //MARK: 添加长按识别器
     func addLongPressGestureRecognizer() {
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(noteLongPressAction(_:)))
         longPressGes.minimumPressDuration = 1
@@ -83,7 +72,7 @@ class DragNoteView: UIView {
         startEditingText()
     }
     
-    //开始编辑text
+    //MARK: 开始编辑text
     func startEditingText() {
         textView.frame = CGRect(x: 13.0, y: 24.0, width: bounds.width - 26.0, height: bounds.height - 40.0)
         textView.attributedText = textLabel.attributedText
@@ -92,15 +81,32 @@ class DragNoteView: UIView {
         textView.becomeFirstResponder()
     }
     
-    //结束编辑text
+    //MARK: 结束编辑text
     func endEditingText() {
         if textView.isFirstResponder {
             textView.resignFirstResponder()
             textLabel.attributedText = textView.attributedText
-            textLabel.sizeToFit()
             textView.isHidden = true
             textLabel.isHidden = false
+            adjustTextLabel()
         }
+    }
+    
+    //MARK: 根据窗口、文字改变label
+    func adjustTextLabel() {
+        textLabel.frame.size.width = bounds.width - 36.0
+        textLabel.sizeToFit()
+        if textLabel.frame.origin.y + textLabel.frame.height >= bounds.height {
+            makeNoteBigger()
+        }
+    }
+    
+    func makeNoteBigger() {
+        UIView.animate(withDuration: 0.1) {
+            self.frame.size.width *= 1.1
+            self.frame.size.height *= 1.1
+        }
+        adjustTextLabel()
     }
 
 
@@ -119,8 +125,9 @@ class DragNoteView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         removeRedCornerFromSuperView()
-        if deleteIfGetIntoRubbishRegion(touches) { return }
-        resetFrameIfOutOfScreen()
+        if !deleteIfGetIntoRubbishRegion(touches) {
+            resetFrameIfOutOfScreen()
+        }
     }
     
     //添加删除角
@@ -164,7 +171,7 @@ class DragNoteView: UIView {
     }
     
     
-    //如果超出屏幕，复位
+    //MARK: 如果超出屏幕，复位
     func resetFrameIfOutOfScreen() {
         var fixedX = frame.origin.x
         var fixedY = frame.origin.y
@@ -184,7 +191,7 @@ class DragNoteView: UIView {
         }
     }
     
-    //移除便签
+    //MARK: 移除便签
     func deleteIfGetIntoRubbishRegion(_ touches: Set<UITouch>) -> Bool {
         let touch = (touches as NSSet).anyObject() as! UITouch
         let nowLocation = touch.location(in: superview)
