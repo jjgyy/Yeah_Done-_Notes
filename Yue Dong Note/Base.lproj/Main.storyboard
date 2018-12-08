@@ -14,14 +14,14 @@
         <scene sceneID="God-to-04P">
             <objects>
                 <viewController id="jRz-8X-hOy" customClass="DragNoteViewController" customModule="Yeah_Done_" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="WallView" customModule="Yeah_Done_" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="RootView" customModule="Yeah_Done_" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m84-IG-BIz">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-QC-rUh" customClass="WallView" customModule="Yeah_Done_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <gestureRecognizers/>
-                            </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-LO-FZ2">
                                 <rect key="frame" x="329" y="777" width="45" height="45"/>
                                 <constraints>
@@ -35,19 +35,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HUz-YP-ipm" firstAttribute="trailing" secondItem="m84-IG-BIz" secondAttribute="trailing" id="77r-jp-rbz"/>
-                            <constraint firstItem="m84-IG-BIz" firstAttribute="leading" secondItem="HUz-YP-ipm" secondAttribute="leading" id="Neh-m2-V7D"/>
+                            <constraint firstItem="Wy3-QC-rUh" firstAttribute="height" secondItem="M0W-Wr-Ban" secondAttribute="height" id="Cko-8D-PQE"/>
+                            <constraint firstItem="Wy3-QC-rUh" firstAttribute="bottom" secondItem="HUz-YP-ipm" secondAttribute="bottom" constant="34" id="KQK-st-e50"/>
+                            <constraint firstItem="Wy3-QC-rUh" firstAttribute="width" secondItem="M0W-Wr-Ban" secondAttribute="width" id="RO7-44-Rjd"/>
+                            <constraint firstItem="Wy3-QC-rUh" firstAttribute="leading" secondItem="HUz-YP-ipm" secondAttribute="leading" id="Xm4-i2-llk"/>
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="bottom" secondItem="Gw6-LO-FZ2" secondAttribute="bottom" constant="40" id="Y0a-0a-9uw"/>
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="trailing" secondItem="Gw6-LO-FZ2" secondAttribute="trailing" constant="40" id="c3A-8q-Oph"/>
-                            <constraint firstItem="m84-IG-BIz" firstAttribute="top" secondItem="M0W-Wr-Ban" secondAttribute="top" id="hxB-if-RVS"/>
-                            <constraint firstItem="m84-IG-BIz" firstAttribute="height" secondItem="M0W-Wr-Ban" secondAttribute="height" id="npQ-Jl-6dm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HUz-YP-ipm"/>
                     </view>
                     <connections>
                         <outlet property="addNewNoteButton" destination="Gw6-LO-FZ2" id="1pz-gT-AkD"/>
-                        <outlet property="wallBackgroundView" destination="m84-IG-BIz" id="29H-tE-tYX"/>
-                        <outlet property="wallView" destination="M0W-Wr-Ban" id="Ta6-zG-Uih"/>
+                        <outlet property="rootView" destination="M0W-Wr-Ban" id="H1P-a5-Joj"/>
+                        <outlet property="wallView" destination="Wy3-QC-rUh" id="2Ob-w6-kg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbK-Sa-Trp" userLabel="First Responder" sceneMemberID="firstResponder"/>
