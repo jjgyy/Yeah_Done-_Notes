@@ -11,12 +11,19 @@
 		180CDFFD21B653C000D8EC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180CDFFB21B653C000D8EC17 /* Main.storyboard */; };
 		180CDFFF21B653C000D8EC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180CDFFE21B653C000D8EC17 /* Assets.xcassets */; };
 		180CE00221B653C000D8EC17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180CE00021B653C000D8EC17 /* LaunchScreen.storyboard */; };
+		1824802621BA2289008EA58C /* RightMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802521BA2289008EA58C /* RightMenuView.swift */; };
+		1824802821BA397F008EA58C /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802721BA397F008EA58C /* CoverView.swift */; };
+		1824802A21BA3D63008EA58C /* BackgroundOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */; };
+		1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802B21BA462E008EA58C /* AllWallBackground.swift */; };
 		18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */; };
 		18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C121B6AC0B0059A007 /* DragNoteView.swift */; };
 		18B287C421B6E4E70059A007 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C321B6E4E70059A007 /* Note.swift */; };
+		18D6EEA621BB9F3F00C4C3A5 /* RightMenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6EEA521BB9F3F00C4C3A5 /* RightMenuSection.swift */; };
 		18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2EE21B8048F00C5C966 /* WallView.swift */; };
 		18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2F021B8F35600C5C966 /* Theme.swift */; };
-		18D7E2FB21B9424800C5C966 /* AllThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2FA21B9424800C5C966 /* AllThemes.swift */; };
+		18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30421B95C3400C5C966 /* xindi.TTF */; };
+		18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30621B95D7B00C5C966 /* myWorld.TTF */; };
+		18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30821B95F8200C5C966 /* taotao.TTF */; };
 		18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E455EA21B77AEE00C9315D /* NoteWall.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,12 +34,19 @@
 		180CDFFE21B653C000D8EC17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180CE00121B653C000D8EC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		180CE00321B653C000D8EC17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1824802521BA2289008EA58C /* RightMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuView.swift; sourceTree = "<group>"; };
+		1824802721BA397F008EA58C /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
+		1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptionalTable.swift; sourceTree = "<group>"; };
+		1824802B21BA462E008EA58C /* AllWallBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWallBackground.swift; sourceTree = "<group>"; };
 		18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteViewController.swift; sourceTree = "<group>"; };
 		18B287C121B6AC0B0059A007 /* DragNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteView.swift; sourceTree = "<group>"; };
 		18B287C321B6E4E70059A007 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		18D6EEA521BB9F3F00C4C3A5 /* RightMenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuSection.swift; sourceTree = "<group>"; };
 		18D7E2EE21B8048F00C5C966 /* WallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
 		18D7E2F021B8F35600C5C966 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		18D7E2FA21B9424800C5C966 /* AllThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllThemes.swift; sourceTree = "<group>"; };
+		18D7E30421B95C3400C5C966 /* xindi.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = xindi.TTF; sourceTree = "<group>"; };
+		18D7E30621B95D7B00C5C966 /* myWorld.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = myWorld.TTF; sourceTree = "<group>"; };
+		18D7E30821B95F8200C5C966 /* taotao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = taotao.TTF; sourceTree = "<group>"; };
 		18E455EA21B77AEE00C9315D /* NoteWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +80,7 @@
 		180CDFF621B653C000D8EC17 /* Yue Dong Note */ = {
 			isa = PBXGroup;
 			children = (
+				18D7E30021B959BB00C5C966 /* Font */,
 				180CDFFB21B653C000D8EC17 /* Main.storyboard */,
 				180CE00321B653C000D8EC17 /* Info.plist */,
 				18D7E2F321B91EDC00C5C966 /* Model */,
@@ -85,12 +100,24 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		18D6EEA421BB9EFF00C4C3A5 /* Right Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1824802521BA2289008EA58C /* RightMenuView.swift */,
+				1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */,
+				18D6EEA521BB9F3F00C4C3A5 /* RightMenuSection.swift */,
+			);
+			path = "Right Menu";
+			sourceTree = "<group>";
+		};
 		18D7E2F221B91EAC00C5C966 /* DragNoteWall */ = {
 			isa = PBXGroup;
 			children = (
 				18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */,
 				18B287C121B6AC0B0059A007 /* DragNoteView.swift */,
 				18D7E2EE21B8048F00C5C966 /* WallView.swift */,
+				18D6EEA421BB9EFF00C4C3A5 /* Right Menu */,
+				1824802721BA397F008EA58C /* CoverView.swift */,
 			);
 			path = DragNoteWall;
 			sourceTree = "<group>";
@@ -101,7 +128,7 @@
 				18B287C321B6E4E70059A007 /* Note.swift */,
 				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
 				18D7E2F021B8F35600C5C966 /* Theme.swift */,
-				18D7E2FA21B9424800C5C966 /* AllThemes.swift */,
+				1824802B21BA462E008EA58C /* AllWallBackground.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,6 +139,16 @@
 				18D7E2F221B91EAC00C5C966 /* DragNoteWall */,
 			);
 			path = "Controller and View";
+			sourceTree = "<group>";
+		};
+		18D7E30021B959BB00C5C966 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E30821B95F8200C5C966 /* taotao.TTF */,
+				18D7E30621B95D7B00C5C966 /* myWorld.TTF */,
+				18D7E30421B95C3400C5C966 /* xindi.TTF */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				180CE00221B653C000D8EC17 /* LaunchScreen.storyboard in Resources */,
+				18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */,
+				18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */,
+				18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */,
 				180CDFFF21B653C000D8EC17 /* Assets.xcassets in Resources */,
 				180CDFFD21B653C000D8EC17 /* Main.storyboard in Resources */,
 			);
@@ -186,13 +226,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B287C421B6E4E70059A007 /* Note.swift in Sources */,
-				18D7E2FB21B9424800C5C966 /* AllThemes.swift in Sources */,
 				18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */,
+				1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */,
 				18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */,
 				180CDFF821B653C000D8EC17 /* AppDelegate.swift in Sources */,
 				18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */,
+				1824802821BA397F008EA58C /* CoverView.swift in Sources */,
 				18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */,
+				1824802A21BA3D63008EA58C /* BackgroundOptionalTable.swift in Sources */,
+				18D6EEA621BB9F3F00C4C3A5 /* RightMenuSection.swift in Sources */,
 				18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */,
+				1824802621BA2289008EA58C /* RightMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

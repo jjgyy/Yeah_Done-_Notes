@@ -13,13 +13,14 @@
         <!--Drag Note View Controller-->
         <scene sceneID="God-to-04P">
             <objects>
-                <viewController id="jRz-8X-hOy" customClass="DragNoteViewController" customModule="Yue_Dong_Note" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="WallView" customModule="Yue_Dong_Note" customModuleProvider="target">
+                <viewController id="jRz-8X-hOy" customClass="DragNoteViewController" customModule="Yeah_Done_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="WallView" customModule="Yeah_Done_" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m84-IG-BIz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-LO-FZ2">
                                 <rect key="frame" x="329" y="777" width="45" height="45"/>
@@ -45,13 +46,13 @@
                     </view>
                     <connections>
                         <outlet property="addNewNoteButton" destination="Gw6-LO-FZ2" id="1pz-gT-AkD"/>
-                        <outlet property="wallBackground" destination="m84-IG-BIz" id="29H-tE-tYX"/>
+                        <outlet property="wallBackgroundView" destination="m84-IG-BIz" id="29H-tE-tYX"/>
                         <outlet property="wallView" destination="M0W-Wr-Ban" id="Ta6-zG-Uih"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbK-Sa-Trp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="952" y="875"/>
+            <point key="canvasLocation" x="950.72463768115949" y="874.55357142857144"/>
         </scene>
     </scenes>
 </document>

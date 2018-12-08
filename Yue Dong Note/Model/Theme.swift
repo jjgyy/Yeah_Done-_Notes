@@ -13,7 +13,8 @@ struct Theme: Codable {
     
     var noteColor: NoteColor
     var noteFontSize: Float
-    var noteWallBackground: String
+    var noteWallBackgroundBase64: String
+    var noteWallBackgroundTableIndex = 1
     var noteNailImage: String
     
     struct NoteColor: Codable {
@@ -34,10 +35,10 @@ struct Theme: Codable {
         return try? JSONEncoder().encode(self)
     }
     
-    init(noteColor: NoteColor, noteFontSize: Float, noteWallBackground: String, noteNailImage: String) {
+    init(noteColor: NoteColor, noteFontSize: Float, noteWallBackgroundBase64: String, noteNailImage: String) {
         self.noteColor = noteColor
         self.noteFontSize = noteFontSize
-        self.noteWallBackground = noteWallBackground
+        self.noteWallBackgroundBase64 = noteWallBackgroundBase64
         self.noteNailImage = noteNailImage
     }
     

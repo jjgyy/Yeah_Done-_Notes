@@ -10,6 +10,7 @@ import UIKit
 
 class DragNoteView: UIView {
 
+    var noteBackgroundView = UIImageView()
     var textLabel = UILabel()
     var textView = UITextView()
     var noteNail = UIImageView()
@@ -19,6 +20,7 @@ class DragNoteView: UIView {
     //init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addNoteBackground()
         addTextLabel()
         addTextView()
         addNoteNail()
@@ -29,10 +31,15 @@ class DragNoteView: UIView {
         super.init(coder: aDecoder)
     }
     
+    func addNoteBackground() {
+        noteBackgroundView.frame.origin = CGPoint(x: 0.0, y: 0.0)
+        addSubview(noteBackgroundView)
+    }
+    
     //添加文字label
     func addTextLabel() {
         textLabel.numberOfLines = 0
-        textLabel.frame = CGRect(x: 18.0, y: 32.0, width: 0.0, height: 0.0)
+        textLabel.frame.origin = CGPoint(x: 18.0, y: 32.0)
         addSubview(textLabel)
         textLabel.isHidden = false
     }
@@ -92,6 +99,11 @@ class DragNoteView: UIView {
         }
     }
     
+    func adjustNoteBackgroundView() {
+        noteBackgroundView.frame.size.width = bounds.width + 10.0
+        noteBackgroundView.frame.size.height = bounds.height + 10.0
+    }
+    
     //MARK: 根据窗口、文字改变label
     func adjustTextLabel() {
         textLabel.frame.size.width = bounds.width - 36.0
@@ -105,8 +117,9 @@ class DragNoteView: UIView {
         UIView.animate(withDuration: 0.1) {
             self.frame.size.width *= 1.1
             self.frame.size.height *= 1.1
+            self.adjustNoteBackgroundView()
+            self.adjustTextLabel()
         }
-        adjustTextLabel()
     }
 
 

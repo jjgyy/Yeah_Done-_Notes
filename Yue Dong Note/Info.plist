@@ -43,6 +43,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>xindi.TTF</string>
+		<string>myWorld.TTF</string>
+		<string>taotao.TTF</string>
+	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
 </dict>

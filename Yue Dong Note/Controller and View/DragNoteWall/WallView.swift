@@ -9,7 +9,9 @@
 import UIKit
 
 class WallView: UIView {
-
+    
+    var backgroundImageView = UIImageView()
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         for view in subviews {
@@ -20,5 +22,15 @@ class WallView: UIView {
             }
         }
     }
+    
+    //MARK: 移除所有drag note view
+    func removeAllDragNoteView() {
+        for view in subviews {
+            if view is DragNoteView {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
 
 }
