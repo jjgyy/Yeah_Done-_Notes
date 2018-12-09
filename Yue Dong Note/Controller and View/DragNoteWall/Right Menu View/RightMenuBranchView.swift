@@ -10,7 +10,7 @@ import UIKit
 
 class RightMenuBranchView: UIView {
     
-    var backButton = UIButton(type: UIButton.ButtonType.contactAdd)
+    var backButton = RightMenuButton(text: "<返回")
     var rightMenuView: RightMenuView? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -39,7 +39,7 @@ class RightMenuBranchView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        backButton.frame = CGRect(x: 0.0, y: 10.0, width: 100.0, height: 100.0)
+        backButton.frame = CGRect(x: 0.0, y: 50.0, width: bounds.width, height: 45.0)
     }
     
 }

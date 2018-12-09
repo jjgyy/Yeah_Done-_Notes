@@ -8,40 +8,19 @@
 
 import UIKit
 
-extension Note.NoteFrame {
-    var uiFrame: CGRect {
-        return CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(width), height: CGFloat(height))
-    }
-}
-
 extension Theme.NoteColor {
     var uiColor: UIColor {
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
 }
 
-extension UIFont {
-    func noteFont(fontSize: CGFloat) -> UIFont {
-        var font = UIFont(name: "AaTaoTaoti", size: 17.0)
-        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font!)
-        return font!
-    }
-}
-
-extension DragNoteView {
-    func decorateWithNote(note: Note, theme: Theme) -> DragNoteView {
-        textLabel.attributedText = NSAttributedString(string: note.text, attributes: [.font:UIFont().noteFont(fontSize: CGFloat(theme.noteFontSize))])
-        textView.font = UIFont().noteFont(fontSize: CGFloat(theme.noteFontSize))
-        textView.attributedText = textLabel.attributedText
-        backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        noteNail.image = UIImage(named: theme.noteNailImage)
-        noteBackgroundView.image = UIImage(named: "note2")
-        frame = note.frame.uiFrame
-        adjustNoteBackgroundView()
-        adjustTextLabel()
-        return self
-    }
-}
+//extension UIFont {
+//    func noteFont(fontSize: CGFloat) -> UIFont {
+//        var font = UIFont(name: "AaTaoTaoti", size: 17.0)
+//        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font!)
+//        return font!
+//    }
+//}
 
 class DragNoteViewController: UIViewController {
     
@@ -58,9 +37,9 @@ class DragNoteViewController: UIViewController {
     @IBAction func addNewNote(_ sender: UIButton) {
         addNewNoteButton.isHidden = true
         let newNote = Note(text: "", width: 150, height: 200, x: 150, y: 200)
-        let newDragNoteView = DragNoteView().decorateWithNote(note: newNote, theme: theme)
+        let newDragNoteView = DragNoteView(note: newNote, fontName: theme.noteFont, fontSize: 17.0, backgroundName: "note2")
         wallView.addSubview(newDragNoteView)
-        newDragNoteView.textView.font = UIFont().noteFont(fontSize: CGFloat(theme.noteFontSize))
+        newDragNoteView.textView.font = UIFont(name: theme.noteFont, size: 17.0)
         newDragNoteView.startEditingText()
         noteWall.notes += [newNote]
         saveNoteWall()
@@ -70,6 +49,8 @@ class DragNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTheme()
+        rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.indexOfCheckmarkedCell = theme.noteWallBackgroundTableIndex
+        rootView.rightMenuView.fontConfigurationView.fontOptionalTable.indexOfCheckmarkedCell = theme.noteFontTableIndex
         configAddNewNoteButton()
         configWallViewBackgroundImage()
 //        for fontFamilyName in UIFont.familyNames{
@@ -123,6 +104,15 @@ class DragNoteViewController: UIViewController {
         }
     }
     
+    //MARK: 通过字体选择表改变字体
+    func setFontThroughBackgroundOptionalTable(fontName: String, cellIndex: Int) {
+        if let font = UIFont(name: fontName, size: 17.0) {
+            wallView.changeAllDragNoteFont(font: font)
+            theme.noteFont = fontName
+            theme.noteFontTableIndex = cellIndex
+        }
+    }
+    
     
     func showRightMenuView() {
         wallView.showCoverView()
@@ -171,7 +161,7 @@ class DragNoteViewController: UIViewController {
             }
         }
         for note in noteWall.notes {
-            let newDragNoteView = DragNoteView().decorateWithNote(note: note, theme: theme)
+            let newDragNoteView = DragNoteView(note: note, fontName: theme.noteFont, fontSize: 17.0, backgroundName: "note2")
             wallView.addSubview(newDragNoteView)
         }
     }

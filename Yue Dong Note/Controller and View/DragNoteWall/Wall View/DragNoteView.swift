@@ -6,6 +6,12 @@
 //  Copyright © 2018 Young. All rights reserved.
 //
 
+extension Note.NoteFrame {
+    var uiFrame: CGRect {
+        return CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(width), height: CGFloat(height))
+    }
+}
+
 import UIKit
 
 class DragNoteView: UIView {
@@ -16,54 +22,44 @@ class DragNoteView: UIView {
     var noteNail = UIImageView()
     private lazy var originalBounds = bounds
     private var redCorner = UIImageView()
+    var font: UIFont? {
+        willSet {
+            if let string = textLabel.attributedText?.string, let font = newValue {
+                textLabel.attributedText = NSAttributedString(string: string, attributes: [.font: font])
+                textView.font = font
+                textView.attributedText = textLabel.attributedText
+            }
+        }
+    }
     
     //init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addNoteBackground()
-        addTextLabel()
-        addTextView()
-        addNoteNail()
-        addShadow()
+    init(note: Note, fontName: String, fontSize: CGFloat, backgroundName: String) {
+        super.init(frame: note.frame.uiFrame)
+        
+        addSubview(noteBackgroundView)
+        noteBackgroundView.image = UIImage(named: backgroundName)
+        
+        addSubview(textLabel)
+        if let font = UIFont(name: fontName, size: fontSize) {
+            textLabel.attributedText = NSAttributedString(string: note.text, attributes: [.font : font])
+        }
+        textLabel.frame.origin = CGPoint(x: 18.0, y: 32.0)
+        textLabel.numberOfLines = 0
+        textLabel.isHidden = false
+        
+        addSubview(textView)
+        textView.attributedText = textLabel.attributedText
+        textView.backgroundColor = .clear
+        textView.isHidden = true
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5;
+        layer.shadowRadius = 5;
+        
         addLongPressGestureRecognizer()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    func addNoteBackground() {
-        noteBackgroundView.frame.origin = CGPoint(x: 0.0, y: 0.0)
-        addSubview(noteBackgroundView)
-    }
-    
-    //添加文字label
-    func addTextLabel() {
-        textLabel.numberOfLines = 0
-        textLabel.frame.origin = CGPoint(x: 18.0, y: 32.0)
-        addSubview(textLabel)
-        textLabel.isHidden = false
-    }
-    
-    //添加文字输入区
-    func addTextView() {
-        textView.frame = textLabel.frame
-        textView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        addSubview(textView)
-        textView.isHidden = true
-    }
-    
-    //添加大头针图片
-    func addNoteNail() {
-        noteNail.frame = CGRect(x: 2.0, y: 4.0, width: 36.0, height: 26.0)
-        addSubview(noteNail)
-    }
-    
-    
-    //添加阴影
-    func addShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5;
-        layer.shadowRadius = 5;
     }
     
     //MARK: 添加长按识别器
@@ -78,6 +74,18 @@ class DragNoteView: UIView {
         removeRedCornerFromSuperView()
         startEditingText()
     }
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        noteBackgroundView.frame.origin = bounds.origin
+        noteBackgroundView.frame.size.width = bounds.width + 10.0
+        noteBackgroundView.frame.size.height = bounds.height + 10.0
+        
+        adjustTextLabel()
+    }
+    
     
     //MARK: 开始编辑text
     func startEditingText() {
@@ -99,10 +107,6 @@ class DragNoteView: UIView {
         }
     }
     
-    func adjustNoteBackgroundView() {
-        noteBackgroundView.frame.size.width = bounds.width + 10.0
-        noteBackgroundView.frame.size.height = bounds.height + 10.0
-    }
     
     //MARK: 根据窗口、文字改变label
     func adjustTextLabel() {
@@ -112,15 +116,14 @@ class DragNoteView: UIView {
             makeNoteBigger()
         }
     }
-    
     func makeNoteBigger() {
         UIView.animate(withDuration: 0.1) {
             self.frame.size.width *= 1.1
             self.frame.size.height *= 1.1
-            self.adjustNoteBackgroundView()
             self.adjustTextLabel()
         }
     }
+    
 
 
     //拖动view

@@ -10,7 +10,9 @@ import UIKit
 
 class RightMenuMainView: UIView {
     
-    var backgroundConfigurationButton = UIButton(type: UIButton.ButtonType.contactAdd)
+    var styleConfigurationLabel = UILabel()
+    var backgroundConfigurationButton = RightMenuButton(text: "背景")
+    var fontConfigurationButton = RightMenuButton(text: "字体")
     var rightMenuView: RightMenuView? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -24,8 +26,14 @@ class RightMenuMainView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(styleConfigurationLabel)
+        styleConfigurationLabel.text = "样式"
+        
         addSubview(backgroundConfigurationButton)
         backgroundConfigurationButton.addTarget(self, action: #selector(toBackgroundConfigurationView), for: UIControl.Event.touchUpInside)
+        
+        addSubview(fontConfigurationButton)
+        fontConfigurationButton.addTarget(self, action: #selector(toFontConfigurationView), for: UIControl.Event.touchUpInside)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -35,9 +43,15 @@ class RightMenuMainView: UIView {
         rightMenuView?.toBackgroundConfiguration()
     }
     
+    @objc func toFontConfigurationView() {
+        rightMenuView?.toFontConfiguration()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundConfigurationButton.frame = CGRect(x: 0.0, y: 20.0, width: 100.0, height: 50.0)
+        styleConfigurationLabel.frame = CGRect(x: 10.0, y: 35.0, width: bounds.width, height: 50.0)
+        backgroundConfigurationButton.frame = CGRect(x: 0.0, y: 80.0, width: bounds.width, height: 45.0)
+        fontConfigurationButton.frame = CGRect(x: 0.0, y: 125.0, width: bounds.width, height: 45.0)
     }
     
 }

@@ -17,10 +17,14 @@
 		1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802B21BA462E008EA58C /* AllWallBackground.swift */; };
 		185EF2C221BC16DB00D98E29 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C121BC16DB00D98E29 /* RootView.swift */; };
 		185EF2C621BC266A00D98E29 /* BackgroundConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */; };
-		185EF2C821BC29D300D98E29 /* BackgroundConfigurationMenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C721BC29D300D98E29 /* BackgroundConfigurationMenuSection.swift */; };
 		185EF2CA21BC2A8100D98E29 /* RightMenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */; };
 		185EF2CD21BC2D9F00D98E29 /* RightMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2CC21BC2D9F00D98E29 /* RightMenuButton.swift */; };
 		185EF2CF21BC36D100D98E29 /* RightMenuBranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2CE21BC36D100D98E29 /* RightMenuBranchView.swift */; };
+		185EF2D121BCDAFF00D98E29 /* FontConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D021BCDAFF00D98E29 /* FontConfigurationView.swift */; };
+		185EF2D421BCE09400D98E29 /* AllFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D321BCE09400D98E29 /* AllFont.swift */; };
+		185EF2D621BCE38800D98E29 /* FontOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D521BCE38800D98E29 /* FontOptionalTable.swift */; };
+		185EF2D821BCE40600D98E29 /* RightMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D721BCE40600D98E29 /* RightMenuTable.swift */; };
+		185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D921BCE5FA00D98E29 /* TableData.swift */; };
 		18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */; };
 		18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C121B6AC0B0059A007 /* DragNoteView.swift */; };
 		18B287C421B6E4E70059A007 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C321B6E4E70059A007 /* Note.swift */; };
@@ -45,10 +49,14 @@
 		1824802B21BA462E008EA58C /* AllWallBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWallBackground.swift; sourceTree = "<group>"; };
 		185EF2C121BC16DB00D98E29 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundConfigurationView.swift; sourceTree = "<group>"; };
-		185EF2C721BC29D300D98E29 /* BackgroundConfigurationMenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundConfigurationMenuSection.swift; sourceTree = "<group>"; };
 		185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuMainView.swift; sourceTree = "<group>"; };
 		185EF2CC21BC2D9F00D98E29 /* RightMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuButton.swift; sourceTree = "<group>"; };
 		185EF2CE21BC36D100D98E29 /* RightMenuBranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuBranchView.swift; sourceTree = "<group>"; };
+		185EF2D021BCDAFF00D98E29 /* FontConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontConfigurationView.swift; sourceTree = "<group>"; };
+		185EF2D321BCE09400D98E29 /* AllFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFont.swift; sourceTree = "<group>"; };
+		185EF2D521BCE38800D98E29 /* FontOptionalTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontOptionalTable.swift; sourceTree = "<group>"; };
+		185EF2D721BCE40600D98E29 /* RightMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuTable.swift; sourceTree = "<group>"; };
+		185EF2D921BCE5FA00D98E29 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
 		18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteViewController.swift; sourceTree = "<group>"; };
 		18B287C121B6AC0B0059A007 /* DragNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteView.swift; sourceTree = "<group>"; };
 		18B287C321B6E4E70059A007 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -125,6 +133,7 @@
 			children = (
 				185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */,
 				1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */,
+				1824802B21BA462E008EA58C /* AllWallBackground.swift */,
 			);
 			path = "Background Configuration";
 			sourceTree = "<group>";
@@ -133,10 +142,18 @@
 			isa = PBXGroup;
 			children = (
 				185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */,
-				185EF2C721BC29D300D98E29 /* BackgroundConfigurationMenuSection.swift */,
-				185EF2CC21BC2D9F00D98E29 /* RightMenuButton.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		185EF2D221BCDB0200D98E29 /* Font Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				185EF2D021BCDAFF00D98E29 /* FontConfigurationView.swift */,
+				185EF2D521BCE38800D98E29 /* FontOptionalTable.swift */,
+				185EF2D321BCE09400D98E29 /* AllFont.swift */,
+			);
+			path = "Font Configuration";
 			sourceTree = "<group>";
 		};
 		18D6EEA421BB9EFF00C4C3A5 /* Right Menu View */ = {
@@ -144,8 +161,11 @@
 			children = (
 				1824802521BA2289008EA58C /* RightMenuView.swift */,
 				185EF2CE21BC36D100D98E29 /* RightMenuBranchView.swift */,
+				185EF2CC21BC2D9F00D98E29 /* RightMenuButton.swift */,
+				185EF2D721BCE40600D98E29 /* RightMenuTable.swift */,
 				185EF2CB21BC2AD600D98E29 /* Main */,
 				185EF2C421BC262100D98E29 /* Background Configuration */,
+				185EF2D221BCDB0200D98E29 /* Font Configuration */,
 			);
 			path = "Right Menu View";
 			sourceTree = "<group>";
@@ -167,7 +187,7 @@
 				18B287C321B6E4E70059A007 /* Note.swift */,
 				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
 				18D7E2F021B8F35600C5C966 /* Theme.swift */,
-				1824802B21BA462E008EA58C /* AllWallBackground.swift */,
+				185EF2D921BCE5FA00D98E29 /* TableData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,12 +294,16 @@
 				180CDFF821B653C000D8EC17 /* AppDelegate.swift in Sources */,
 				18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */,
 				1824802821BA397F008EA58C /* CoverView.swift in Sources */,
+				185EF2D821BCE40600D98E29 /* RightMenuTable.swift in Sources */,
 				185EF2C621BC266A00D98E29 /* BackgroundConfigurationView.swift in Sources */,
 				18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */,
 				1824802A21BA3D63008EA58C /* BackgroundOptionalTable.swift in Sources */,
-				185EF2C821BC29D300D98E29 /* BackgroundConfigurationMenuSection.swift in Sources */,
 				18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */,
+				185EF2D421BCE09400D98E29 /* AllFont.swift in Sources */,
+				185EF2D621BCE38800D98E29 /* FontOptionalTable.swift in Sources */,
 				1824802621BA2289008EA58C /* RightMenuView.swift in Sources */,
+				185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */,
+				185EF2D121BCDAFF00D98E29 /* FontConfigurationView.swift in Sources */,
 				185EF2CD21BC2D9F00D98E29 /* RightMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

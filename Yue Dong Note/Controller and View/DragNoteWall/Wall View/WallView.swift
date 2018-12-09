@@ -73,6 +73,23 @@ class WallView: UIView {
         backgroundImageView.image = uiImage
     }
     
+    
+    //MARK: 根据wallView生成dragNote
+    func createAllDragNoteViewWithNoteWall(noteWall: NoteWall) {
+        removeAllDragNoteView()
+        
+    }
+    
+    
+    //MARK: 改变所有drag note view字体
+    func changeAllDragNoteFont(font: UIFont) {
+        for view in subviews {
+            if view is DragNoteView {
+                (view as! DragNoteView).font = font
+            }
+        }
+    }
+    
     //MARK: 移除所有drag note view
     func removeAllDragNoteView() {
         for view in subviews {

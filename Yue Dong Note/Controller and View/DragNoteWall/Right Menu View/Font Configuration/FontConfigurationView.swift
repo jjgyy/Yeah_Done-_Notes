@@ -1,5 +1,5 @@
 //
-//  BackgroundConfigurationView.swift
+//  Font Configuration.swift
 //  Yeah Done!
 //
 //  Created by Apple on 2018/12/9.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BackgroundConfigurationView: RightMenuBranchView {
-    
-    var backgroundOptionalLabel = UILabel()
-    var backgroundOptionalTable = BackgroundOptionalTable()
+class FontConfigurationView: RightMenuBranchView {
+
+    var fontOptionalLabel = UILabel()
+    var fontOptionalTable = FontOptionalTable()
     var controller: DragNoteViewController? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -27,9 +27,9 @@ class BackgroundConfigurationView: RightMenuBranchView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(backgroundOptionalLabel)
-        addSubview(backgroundOptionalTable)
-        backgroundOptionalLabel.text = "背景"
+        addSubview(fontOptionalLabel)
+        addSubview(fontOptionalTable)
+        fontOptionalLabel.text = "字体"
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,9 +38,8 @@ class BackgroundConfigurationView: RightMenuBranchView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundOptionalLabel.frame = CGRect(x: 10.0, y: 100.0, width: 100.0, height: 50.0)
-        backgroundOptionalTable.frame = CGRect(x: 0.0, y: 150.0, width: Double(bounds.width), height: Double(backgroundOptionalTable.backgrounds.count) * 44.0)
+        fontOptionalLabel.frame = CGRect(x: 10.0, y: 100.0, width: 100.0, height: 50.0)
+        fontOptionalTable.frame = CGRect(x: 0.0, y: 150.0, width: Double(bounds.width), height: Double(fontOptionalTable.fonts.count) * 44.0)
     }
-    
-    
+
 }

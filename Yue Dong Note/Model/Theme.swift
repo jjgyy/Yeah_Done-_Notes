@@ -12,6 +12,8 @@ import Foundation
 struct Theme: Codable {
     
     var noteColor: NoteColor
+    var noteFont = "AaTaoTaoti"
+    var noteFontTableIndex = 1
     var noteFontSize: Float
     var noteWallBackgroundBase64: String
     var noteWallBackgroundTableIndex = 1
