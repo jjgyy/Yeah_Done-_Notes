@@ -10,7 +10,7 @@ import UIKit
 
 class FontConfigurationView: RightMenuBranchView {
 
-    var fontOptionalLabel = UILabel()
+    var fontOptionalLabel = RightMenuLabel(text: NSLocalizedString("Font", comment: "字体"))
     var fontOptionalTable = FontOptionalTable()
     var controller: DragNoteViewController? {
         get {
@@ -29,7 +29,6 @@ class FontConfigurationView: RightMenuBranchView {
         super.init(frame: frame)
         addSubview(fontOptionalLabel)
         addSubview(fontOptionalTable)
-        fontOptionalLabel.text = "字体"
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,7 +37,7 @@ class FontConfigurationView: RightMenuBranchView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        fontOptionalLabel.frame = CGRect(x: 10.0, y: 100.0, width: 100.0, height: 50.0)
+        fontOptionalLabel.frame = CGRect(x: 10.0, y: 100.0, width: bounds.width, height: 50.0)
         fontOptionalTable.frame = CGRect(x: 0.0, y: 150.0, width: Double(bounds.width), height: Double(fontOptionalTable.fonts.count) * 44.0)
     }
 

@@ -15,6 +15,7 @@ class RightMenuButton: UIButton {
     init(text: String) {
         super.init(frame: CGRect.zero)
         textLabel.text = text
+        textLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
         addSubview(textLabel)
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
     }
@@ -24,7 +25,7 @@ class RightMenuButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        textLabel.frame = CGRect(x: 20.0, y: 0.0, width: bounds.width, height: bounds.height)
+        textLabel.frame = CGRect(x: 30.0, y: 0.0, width: bounds.width, height: bounds.height)
     }
     
     override func draw(_ rect: CGRect) {

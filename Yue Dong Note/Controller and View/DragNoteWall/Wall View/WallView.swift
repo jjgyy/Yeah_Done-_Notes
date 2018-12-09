@@ -45,8 +45,8 @@ class WallView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundImageView.frame = frame
-        coverView.frame = frame
+        backgroundImageView.frame = bounds
+        coverView.frame = bounds
     }
     
     
@@ -74,18 +74,24 @@ class WallView: UIView {
     }
     
     
-    //MARK: 根据wallView生成dragNote
-    func createAllDragNoteViewWithNoteWall(noteWall: NoteWall) {
-        removeAllDragNoteView()
-        
-    }
-    
     
     //MARK: 改变所有drag note view字体
     func changeAllDragNoteFont(font: UIFont) {
         for view in subviews {
             if view is DragNoteView {
-                (view as! DragNoteView).font = font
+                let dragNoteView = (view as! DragNoteView)
+                dragNoteView.font = font
+                dragNoteView.adjustTextLabel()
+            }
+        }
+    }
+    
+    //MARK: 改变所有drag note view背景
+    func changeAllDragNoteBackground(image: UIImage) {
+        for view in subviews {
+            if view is DragNoteView {
+                let dragNoteView = (view as! DragNoteView)
+                dragNoteView.noteBackgroundView.image = image
             }
         }
     }

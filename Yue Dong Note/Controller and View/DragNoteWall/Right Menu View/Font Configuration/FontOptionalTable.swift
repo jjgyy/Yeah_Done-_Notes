@@ -22,8 +22,7 @@ class FontOptionalTable: RightMenuTable {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexOfCheckmarkedCell = indexPath.row
         markTheCellNeedingMarked()
-        let fontFileName = fonts[indexPath.row].fileName
-        controller?.setFontThroughBackgroundOptionalTable(fontName: fontFileName, cellIndex: indexPath.row)
+        controller?.setFontThroughBackgroundOptionalTable(cellIndex: indexPath.row)
     }
     
 }

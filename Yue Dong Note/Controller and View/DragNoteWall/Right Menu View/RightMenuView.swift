@@ -11,9 +11,12 @@ import UIKit
 class RightMenuView: UIView {
     
     var currentSubview: UIView?
+    
     var rightMenuMainView = RightMenuMainView()
     var backgroundConfigurationView = BackgroundConfigurationView()
     var fontConfigurationView = FontConfigurationView()
+    var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
+    
     var controller: DragNoteViewController? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -36,6 +39,7 @@ class RightMenuView: UIView {
         addSubview(rightMenuMainView)
         addSubview(backgroundConfigurationView)
         addSubview(fontConfigurationView)
+        addSubview(noteBackgroundConfigurationView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,6 +61,7 @@ class RightMenuView: UIView {
         rightMenuMainView.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: bounds.height)
         backgroundConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
         fontConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
+        noteBackgroundConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
         
         currentSubview = rightMenuMainView
     }
@@ -73,6 +78,11 @@ class RightMenuView: UIView {
     func toFontConfiguration() {
         fontConfigurationView.fontOptionalTable.markTheCellNeedingMarked()
         transitionAnimationFromRight(to: fontConfigurationView)
+    }
+    
+    func toNoteBackgroundConfiguration() {
+        noteBackgroundConfigurationView.noteBackgroundOptionalTable.markTheCellNeedingMarked()
+        transitionAnimationFromRight(to: noteBackgroundConfigurationView)
     }
     
     func transitionAnimationFromLeft(to view: UIView) {

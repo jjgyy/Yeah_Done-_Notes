@@ -11,37 +11,15 @@ import Foundation
 
 struct Theme: Codable {
     
-    var noteColor: NoteColor
-    var noteFont = "AaTaoTaoti"
-    var noteFontTableIndex = 1
-    var noteFontSize: Float
-    var noteWallBackgroundBase64: String
-    var noteWallBackgroundTableIndex = 1
-    var noteNailImage: String
-    
-    struct NoteColor: Codable {
-        var red: Float
-        var green: Float
-        var blue: Float
-        var alpha: Float
-        
-        init(red: Float, green: Float, blue: Float, alpha: Float) {
-            self.red = red
-            self.green = green
-            self.blue = blue
-            self.alpha = alpha
-        }
-    }
+    var noteFontTableIndex = 0
+    var noteBackgroundTableIndex = 0
+    var noteWallBackgroundTableIndex = 0
     
     var json: Data? {
         return try? JSONEncoder().encode(self)
     }
     
-    init(noteColor: NoteColor, noteFontSize: Float, noteWallBackgroundBase64: String, noteNailImage: String) {
-        self.noteColor = noteColor
-        self.noteFontSize = noteFontSize
-        self.noteWallBackgroundBase64 = noteWallBackgroundBase64
-        self.noteNailImage = noteNailImage
+    init() {
     }
     
     init?(json: Data) {

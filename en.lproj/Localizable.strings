@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  Yeah Done!
+
+  Created by Apple on 2018/12/9.
+  Copyright © 2018 Young. All rights reserved.
+*/
+
+"Back" = "Back";
+
+"Style" = "Style";
+"Background" = "Background";
+"Font" = "Font";
+"Note Style" = "Note Style";
+
+"System" = "System";
+
+//background
+"lake" = "lake";
+"sea blue wall" = "sea blue wall";
+"blackboard" = "blackboard";
+"icy glass" = "icy glass";
+"frosty window" = "frosty window";
+"illustration of leaves" = "illustration of leaves";
+
+//font
+"fine pen handwriting" = "fine pen handwriting";
+"chalk handwriting" = "chalk handwriting";
+
+//note
+"3D light yellow note" = "3D light yellow note";
+"3D light pink note" = "3D light pink note";

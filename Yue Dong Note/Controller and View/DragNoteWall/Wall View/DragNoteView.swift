@@ -57,6 +57,7 @@ class DragNoteView: UIView {
         layer.shadowRadius = 5;
         
         addLongPressGestureRecognizer()
+        addTwoTapGestureRecognizer()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -71,6 +72,17 @@ class DragNoteView: UIView {
         addGestureRecognizer(longPressGes)
     }
     @objc func noteLongPressAction( _ sender : UILongPressGestureRecognizer) {
+        removeRedCornerFromSuperView()
+        startEditingText()
+    }
+    
+    //MARK: 添加双击识别器
+    func addTwoTapGestureRecognizer() {
+        let twoTapGes = UITapGestureRecognizer(target: self, action:  #selector(noteTwoTapAction(_:)))
+        twoTapGes.numberOfTapsRequired = 2
+        addGestureRecognizer(twoTapGes)
+    }
+    @objc func noteTwoTapAction( _ sender : UITapGestureRecognizer) {
         removeRedCornerFromSuperView()
         startEditingText()
     }

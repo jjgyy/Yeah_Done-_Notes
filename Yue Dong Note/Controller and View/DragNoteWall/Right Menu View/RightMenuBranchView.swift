@@ -10,7 +10,7 @@ import UIKit
 
 class RightMenuBranchView: UIView {
     
-    var backButton = RightMenuButton(text: "<返回")
+    var backButton = RightMenuButton(text: "← " + NSLocalizedString("Back", comment: "返回"))
     var rightMenuView: RightMenuView? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {

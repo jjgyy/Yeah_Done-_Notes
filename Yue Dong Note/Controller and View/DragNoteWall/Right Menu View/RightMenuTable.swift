@@ -44,6 +44,8 @@ class RightMenuTable: UITableView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = datas[indexPath.row].uiName
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        cell.textLabel?.textColor = UIColor(red: 0.2, green: 0.5, blue: 1.0, alpha: 1.0)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         return cell

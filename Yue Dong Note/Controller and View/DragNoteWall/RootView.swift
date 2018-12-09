@@ -58,9 +58,7 @@ class RootView: UIView {
         UIView.animate(withDuration: 0.2) {
             self.rightMenuView.frame.origin.x = self.bounds.width - self.rightMenuView.frame.width
         }
-        //rightMenuView.backgroundOptionalTable.markTheCellNeedingMarked()
     }
-    
     
     func hideRightMenu() {
         UIView.animate(withDuration: 0.2) {

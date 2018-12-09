@@ -8,25 +8,11 @@
 
 import UIKit
 
-extension Theme.NoteColor {
-    var uiColor: UIColor {
-        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
-    }
-}
-
-//extension UIFont {
-//    func noteFont(fontSize: CGFloat) -> UIFont {
-//        var font = UIFont(name: "AaTaoTaoti", size: 17.0)
-//        font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font!)
-//        return font!
-//    }
-//}
 
 class DragNoteViewController: UIViewController {
     
     var noteWall = NoteWall()
-    var theme = Theme(noteColor: Theme.NoteColor(red: 1.0, green: 1.0, blue: 0.6, alpha:1.0), noteFontSize: 14.0, noteWallBackgroundBase64: "blackboard", noteNailImage: "lightRedNail")
-    
+    var theme = Theme()
 
     @IBOutlet var rootView: RootView!
         @IBOutlet var wallView: WallView!
@@ -37,9 +23,9 @@ class DragNoteViewController: UIViewController {
     @IBAction func addNewNote(_ sender: UIButton) {
         addNewNoteButton.isHidden = true
         let newNote = Note(text: "", width: 150, height: 200, x: 150, y: 200)
-        let newDragNoteView = DragNoteView(note: newNote, fontName: theme.noteFont, fontSize: 17.0, backgroundName: "note2")
+        let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
-        newDragNoteView.textView.font = UIFont(name: theme.noteFont, size: 17.0)
+        newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
         newDragNoteView.startEditingText()
         noteWall.notes += [newNote]
         saveNoteWall()
@@ -48,11 +34,19 @@ class DragNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadTheme()
         rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.indexOfCheckmarkedCell = theme.noteWallBackgroundTableIndex
         rootView.rightMenuView.fontConfigurationView.fontOptionalTable.indexOfCheckmarkedCell = theme.noteFontTableIndex
+        rootView.rightMenuView.noteBackgroundConfigurationView.noteBackgroundOptionalTable.indexOfCheckmarkedCell = theme.noteBackgroundTableIndex
         configAddNewNoteButton()
         configWallViewBackgroundImage()
+        
+        loadNoteWall()
+        for note in noteWall.notes {
+            let newDragNoteView = DragNoteView(note: note, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
+            wallView.addSubview(newDragNoteView)
+        }
 //        for fontFamilyName in UIFont.familyNames{
 //            print("family"+fontFamilyName)
 //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
@@ -64,13 +58,14 @@ class DragNoteViewController: UIViewController {
     
     //MARK: 配置背景
     func configWallViewBackgroundImage() {
-        let decodedData = NSData(base64Encoded:theme.noteWallBackgroundBase64)
-        if decodedData != nil {
-            let decodedimage = UIImage(data: decodedData! as Data)
-            wallView.backgroundImageView.image = decodedimage
-        } else {
-            wallView.backgroundImageView.image = UIImage(named: "sea")
-        }
+        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.wallBackgrounds[theme.noteWallBackgroundTableIndex].fileName)
+//        let decodedData = NSData(base64Encoded:theme.noteWallBackgroundBase64)
+//        if decodedData != nil {
+//            let decodedimage = UIImage(data: decodedData! as Data)
+//            wallView.backgroundImageView.image = decodedimage
+//        } else {
+//            wallView.backgroundImageView.image = UIImage(named: "sea")
+//        }
     }
     
     //MARK: 配置新便签按钮
@@ -92,25 +87,34 @@ class DragNoteViewController: UIViewController {
     }
     
     
-    
     //MARK: 通过背景选择表改变背景
-    func setWallBackgroundImageThroughBackgroundOptionalTable(image: UIImage, cellIndex: Int) {
-        wallView.backgroundImageView.image = image
+    func setWallBackgroundImageThroughBackgroundOptionalTable(cellIndex: Int) {
+        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.wallBackgrounds[cellIndex].fileName)
         theme.noteWallBackgroundTableIndex = cellIndex
-        if let newImageBase64String = image.base64String {
-            theme.noteWallBackgroundBase64 = newImageBase64String
-        } else {
-            print("couldn't change this image to base64 string")
-        }
+//        if let newImageBase64String = image.base64String {
+//            theme.noteWallBackgroundBase64 = newImageBase64String
+//        } else {
+//            print("couldn't change this image to base64 string")
+//        }
+        saveTheme()
     }
     
     //MARK: 通过字体选择表改变字体
-    func setFontThroughBackgroundOptionalTable(fontName: String, cellIndex: Int) {
-        if let font = UIFont(name: fontName, size: 17.0) {
+    func setFontThroughBackgroundOptionalTable(cellIndex: Int) {
+        if let font = UIFont(name: AllFont.allFonts[cellIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[cellIndex])) {
             wallView.changeAllDragNoteFont(font: font)
-            theme.noteFont = fontName
             theme.noteFontTableIndex = cellIndex
         }
+        saveTheme()
+    }
+    
+    //MARK: 通过便签背景选择表改变便签背景
+    func setNoteBackgroundThroughNoteBackgroundOptionalTable(cellIndex: Int) {
+        if let image = UIImage(named: AllNoteBackground.allNoteBackgrounds[cellIndex].fileName) {
+            wallView.changeAllDragNoteBackground(image: image)
+            theme.noteBackgroundTableIndex = cellIndex
+        }
+        saveTheme()
     }
     
     
@@ -122,19 +126,9 @@ class DragNoteViewController: UIViewController {
     func hideRightMenuView() {
         wallView.hideCoverView()
         rootView.hideRightMenu()
+        rootView.rightMenuView.toMain()
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadNoteWall()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        saveTheme()
-        saveNoteWall()
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -159,10 +153,6 @@ class DragNoteViewController: UIViewController {
                     noteWall = noteWallToLoad
                 }
             }
-        }
-        for note in noteWall.notes {
-            let newDragNoteView = DragNoteView(note: note, fontName: theme.noteFont, fontSize: 17.0, backgroundName: "note2")
-            wallView.addSubview(newDragNoteView)
         }
     }
     
@@ -202,6 +192,15 @@ class DragNoteViewController: UIViewController {
             if let jsonData = try? Data(contentsOf: url) {
                 if let themeToLoad = Theme(json: jsonData) {
                     theme = themeToLoad
+                    if theme.noteBackgroundTableIndex >= AllWallBackground.wallBackgrounds.count {
+                        theme.noteBackgroundTableIndex = 0
+                    }
+                    if theme.noteFontTableIndex >= AllFont.allFonts.count {
+                        theme.noteFontTableIndex = 0
+                    }
+                    if theme.noteBackgroundTableIndex >= AllNoteBackground.allNoteBackgrounds.count {
+                        theme.noteBackgroundTableIndex = 0
+                    }
                 }
             }
         }
