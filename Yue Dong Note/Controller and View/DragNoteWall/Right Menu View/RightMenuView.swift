@@ -17,6 +17,7 @@ class RightMenuView: UIView {
     var fontConfigurationView = FontConfigurationView()
     var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
     var languageConfigurationView = LanguageConfigurationView()
+    var recycleBinView = RecycleBinView()
     
     var controller: DragNoteViewController? {
         get {
@@ -42,6 +43,7 @@ class RightMenuView: UIView {
         addSubview(fontConfigurationView)
         addSubview(noteBackgroundConfigurationView)
         addSubview(languageConfigurationView)
+        addSubview(recycleBinView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -93,6 +95,16 @@ class RightMenuView: UIView {
     func toLanguageConfiguration() {
         languageConfigurationView.languageOptionalTable.markTheCellNeedingMarked()
         transitionAnimationFromRight(to: languageConfigurationView)
+    }
+    
+    func toRecycleBin() {
+        if let datas = controller?.recycleBin.toTableDatas() {
+            recycleBinView.recycleBinTable.removeFromSuperview()
+            recycleBinView.recycleBinTable = RecycleBinTable(recycleBinTableDatas: datas)
+            recycleBinView.addSubview(recycleBinView.recycleBinTable)
+            recycleBinView.setNeedsLayout()
+        }
+        transitionAnimationFromRight(to: recycleBinView)
     }
     
     func transitionAnimationFromLeft(to view: UIView) {

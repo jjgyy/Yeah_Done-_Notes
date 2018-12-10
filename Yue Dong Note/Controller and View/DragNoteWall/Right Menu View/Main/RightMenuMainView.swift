@@ -28,6 +28,7 @@ class RightMenuMainView: UIView {
     
     var systemConfigurationLabel = RightMenuLabel(text: NSLocalizedString("System", comment: "系统"))
         var languageConfigurationButton = RightMenuButton(text: NSLocalizedString("Language", comment: "语言"))
+        var recycleBinButton = RightMenuButton(text: NSLocalizedString("Recycle Bin", comment: "回收站"))
     
 
     override init(frame: CGRect) {
@@ -48,6 +49,9 @@ class RightMenuMainView: UIView {
         
             addSubview(languageConfigurationButton)
             languageConfigurationButton.addTarget(self, action: #selector(toLanguageConfigurationView), for: .touchUpInside)
+        
+            addSubview(recycleBinButton)
+            recycleBinButton.addTarget(self, action: #selector(toRecycleBinView), for: .touchUpInside)
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -70,6 +74,10 @@ class RightMenuMainView: UIView {
         rightMenuView?.toLanguageConfiguration()
     }
     
+    @objc func toRecycleBinView() {
+        rightMenuView?.toRecycleBin()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         styleConfigurationLabel.frame = CGRect(x: 10, y: 35, width: bounds.width, height: 50)
@@ -78,6 +86,7 @@ class RightMenuMainView: UIView {
             noteBackgroundConfigurationButton.frame = CGRect(x: 0, y: 175, width: bounds.width, height: 45)
         systemConfigurationLabel.frame = CGRect(x: 10, y: 230, width: bounds.width, height: 50)
             languageConfigurationButton.frame = CGRect(x: 0, y: 280, width: bounds.width, height: 45)
+            recycleBinButton.frame = CGRect(x: 0, y: 325, width: bounds.width, height: 45)
     }
     
 }

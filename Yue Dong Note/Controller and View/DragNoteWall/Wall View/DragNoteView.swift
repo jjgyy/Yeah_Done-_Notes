@@ -31,6 +31,18 @@ class DragNoteView: UIView {
             }
         }
     }
+    var controller: DragNoteViewController? {
+        get {
+            for view in sequence(first: self, next: { $0?.superview }) {
+                if let responder = view.next {
+                    if responder is DragNoteViewController{
+                        return responder as? DragNoteViewController
+                    }
+                }
+            }
+            return nil
+        }
+    }
     
     //init
     init(note: Note, fontName: String, fontSize: CGFloat, backgroundName: String) {
@@ -43,7 +55,7 @@ class DragNoteView: UIView {
         if let font = UIFont(name: fontName, size: fontSize) {
             textLabel.attributedText = NSAttributedString(string: note.text, attributes: [.font : font])
         }
-        textLabel.frame.origin = CGPoint(x: 18.0, y: 32.0)
+        textLabel.frame.origin = CGPoint(x: 18.0, y: 25.0)
         textLabel.numberOfLines = 0
         textLabel.isHidden = false
         
@@ -101,7 +113,7 @@ class DragNoteView: UIView {
     
     //MARK: 开始编辑text
     func startEditingText() {
-        textView.frame = CGRect(x: 13.0, y: 24.0, width: bounds.width - 26.0, height: bounds.height - 40.0)
+        textView.frame = CGRect(x: 13.0, y: 17.0, width: bounds.width - 26.0, height: bounds.height - 40.0)
         textView.attributedText = textLabel.attributedText
         textView.isHidden = false
         textLabel.isHidden = true
@@ -224,11 +236,18 @@ class DragNoteView: UIView {
         let touch = (touches as NSSet).anyObject() as! UITouch
         let nowLocation = touch.location(in: superview)
         if nowLocation.x <= 100.0 && nowLocation.y >= superview!.bounds.height - 100.0 {
+            controller?.recycleBin.add(dragNoteView2Note(view: self))
+            controller?.saveRecycleBin()
             removeFromSuperview()
             return true
         }
         return false
     }
+    //MARK: view 转 model
+    private func dragNoteView2Note(view: DragNoteView) -> Note {
+        return Note(text: view.textLabel.attributedText!.string, width: Float(view.frame.width), height: Float(view.frame.height), x: Float(view.frame.origin.x), y: Float(view.frame.origin.y))
+    }
+    
     
     //外框比例放大
     func zoom(with ratio: CGFloat) {

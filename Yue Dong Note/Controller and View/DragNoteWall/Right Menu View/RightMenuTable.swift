@@ -51,7 +51,6 @@ class RightMenuTable: UITableView, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
     func markTheCellNeedingMarked() {
         if indexPathsForVisibleRows != nil {
             for indexPath in indexPathsForVisibleRows! {

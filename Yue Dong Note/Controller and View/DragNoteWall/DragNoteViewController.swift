@@ -12,6 +12,7 @@ import UIKit
 class DragNoteViewController: UIViewController {
     
     var noteWall = NoteWall()
+    var recycleBin = RecycleBin()
     var theme = Theme()
 
     @IBOutlet var rootView: RootView!
@@ -22,7 +23,7 @@ class DragNoteViewController: UIViewController {
     //MARK: 新增Note
     @IBAction func addNewNote(_ sender: UIButton) {
         addNewNoteButton.isHidden = true
-        let newNote = Note(text: "", width: 150, height: 200, x: 150, y: 200)
+        let newNote = Note(text: "", width: 150, height: 200, x: Float(wallView.center.x) - 75, y: Float(wallView.center.y) - 100)
         let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
         newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
@@ -45,6 +46,8 @@ class DragNoteViewController: UIViewController {
             let newDragNoteView = DragNoteView(note: note, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
             wallView.addSubview(newDragNoteView)
         }
+        
+        loadRecycleBin()
 //        for fontFamilyName in UIFont.familyNames{
 //            print("family"+fontFamilyName)
 //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
@@ -140,6 +143,16 @@ class DragNoteViewController: UIViewController {
     }
     
     
+    func createNoteThroughRecycleBinTable(cellIndex: Int) {
+        let newNote = Note(text: recycleBin.deletedNotes[cellIndex].text, width: recycleBin.deletedNotes[cellIndex].frame.width, height: recycleBin.deletedNotes[cellIndex].frame.height, x: 50, y: 200)
+        let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
+        wallView.addSubview(newDragNoteView)
+        wallView.showCoverView()
+        newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
+        noteWall.notes += [newNote]
+        saveNoteWall()
+    }
+    
     
     func showRightMenuView() {
         wallView.showCoverView()
@@ -203,6 +216,41 @@ class DragNoteViewController: UIViewController {
             }
         }
     }
+    
+    
+    private func loadRecycleBin() {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("RecycleBin.json") {
+            if let jsonData = try? Data(contentsOf: url) {
+                if let recycleBinToLoad = RecycleBin(json: jsonData) {
+                    recycleBin = recycleBinToLoad
+                }
+            }
+        }
+    }
+    
+    
+    func saveRecycleBin() {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("RecycleBin.json") {
+            if let json = recycleBin.json {
+                do {
+                    try json.write(to: url)
+                } catch let error {
+                    print("couldn't save \(error)")
+                }
+            }
+        }
+    }
+    
     
     //MARK: 读取主题
     private func loadTheme() {
