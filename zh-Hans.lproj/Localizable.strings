@@ -14,19 +14,16 @@
 "Note Style" = "便签样式";
 
 "System" = "系统";
+"Language" = "语言";
 
-//background
 "lake" = "湖水";
 "sea blue wall" = "海蓝色高墙";
-"blackboard" = "黑板";
 "icy glass" = "结冰的玻璃";
 "frosty window" = "雾窗";
 "illustration of leaves" = "淡雅树叶插画";
 
-//font
 "fine pen handwriting" = "细钢笔手写";
 "chalk handwriting" = "粉笔手写";
 
-//note
 "3D light yellow note" = "3D淡黄色便签";
 "3D light pink note" = "3D淡粉色便签";

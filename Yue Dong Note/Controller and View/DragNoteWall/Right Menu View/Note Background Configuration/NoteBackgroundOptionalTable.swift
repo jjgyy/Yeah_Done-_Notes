@@ -9,11 +9,9 @@
 import UIKit
 
 class NoteBackgroundOptionalTable: RightMenuTable {
-
-    var noteBackgrounds = AllNoteBackground.allNoteBackgrounds
     
     init() {
-        super.init(datas: noteBackgrounds)
+        super.init(datas: AllNoteBackground.allNoteBackgrounds)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

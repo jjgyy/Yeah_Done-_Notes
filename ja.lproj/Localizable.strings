@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Yeah Done!
+
+  Created by Apple on 2018/12/9.
+  Copyright © 2018 Young. All rights reserved.
+*/
+
+"Back" = "戻る";
+
+"Style" = "スタイル";
+"Background" = "壁紙";
+"Font" = "フォント";
+"Note Style" = "付箋フォント";
+
+"System" = "システム";
+"Language" = "言語";
+
+"lake" = "湖";
+"sea blue wall" = "海の青い壁";
+"icy glass" = "氷結のガラス";
+"frosty window" = "霧の窓";
+"illustration of leaves" = "木の葉の挿絵";
+
+"fine pen handwriting" = "細いペンで手書き";
+"chalk handwriting" = "チョークの手書き";
+
+"3D light yellow note" = "3D淡い黄色の付箋";
+"3D light pink note" = "3D淡いピンクの付箋";
+
+

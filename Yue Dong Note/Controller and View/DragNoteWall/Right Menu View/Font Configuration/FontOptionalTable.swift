@@ -10,10 +10,8 @@ import UIKit
 
 class FontOptionalTable: RightMenuTable {
     
-    var fonts = AllFont.allFonts
-    
     init() {
-        super.init(datas: fonts)
+        super.init(datas: AllFont.allFonts)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

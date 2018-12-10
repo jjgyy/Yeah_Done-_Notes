@@ -20,4 +20,11 @@ struct AllFont {
         12.0
     ]
     
+    static func reload() {
+        AllFont.allFonts = [
+            TableData(uiName: NSLocalizedString("fine pen handwriting", comment: "细钢笔手写"), fileName: "AaTaoTaoti"),
+            TableData(uiName: NSLocalizedString("chalk handwriting", comment: "粉笔手写"), fileName: "SentyChalkOriginal")
+        ]
+    }
+    
 }

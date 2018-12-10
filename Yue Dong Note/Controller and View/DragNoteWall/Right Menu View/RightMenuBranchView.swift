@@ -21,6 +21,19 @@ class RightMenuBranchView: UIView {
             return nil
         }
     }
+    var controller: DragNoteViewController? {
+        get {
+            for view in sequence(first: self, next: { $0?.superview }) {
+                if let responder = view.next {
+                    if responder is DragNoteViewController{
+                        return responder as? DragNoteViewController
+                    }
+                }
+            }
+            return nil
+        }
+    }
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)

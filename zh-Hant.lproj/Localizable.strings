@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Yeah Done!
+
+  Created by Apple on 2018/12/9.
+  Copyright © 2018 Young. All rights reserved.
+*/
+
+"Back" = "返回";
+
+"Style" = "樣式";
+"Background" = "背景";
+"Font" = "字體";
+"Note Style" = "便利貼樣式";
+
+"System" = "系統";
+"Language" = "語言";
+
+"lake" = "湖水";
+"sea blue wall" = "海藍色高墻";
+"icy glass" = "結冰玻璃";
+"frosty window" = "霧窗";
+"illustration of leaves" = "樹葉插畫";
+
+"fine pen handwriting" = "細鋼筆手寫";
+"chalk handwriting" = "粉筆手寫";
+
+"3D light yellow note" = "3D淡黃色便利貼";
+"3D light pink note" = "3D淡粉色便利貼";
+
+

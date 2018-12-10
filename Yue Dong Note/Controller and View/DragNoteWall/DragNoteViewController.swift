@@ -36,9 +36,7 @@ class DragNoteViewController: UIViewController {
         super.viewDidLoad()
         
         loadTheme()
-        rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.indexOfCheckmarkedCell = theme.noteWallBackgroundTableIndex
-        rootView.rightMenuView.fontConfigurationView.fontOptionalTable.indexOfCheckmarkedCell = theme.noteFontTableIndex
-        rootView.rightMenuView.noteBackgroundConfigurationView.noteBackgroundOptionalTable.indexOfCheckmarkedCell = theme.noteBackgroundTableIndex
+        checkMarkAlltables()
         configAddNewNoteButton()
         configWallViewBackgroundImage()
         
@@ -56,9 +54,16 @@ class DragNoteViewController: UIViewController {
 //        }
     }
     
+    func checkMarkAlltables() {
+        rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.indexOfCheckmarkedCell = theme.noteWallBackgroundTableIndex
+        rootView.rightMenuView.fontConfigurationView.fontOptionalTable.indexOfCheckmarkedCell = theme.noteFontTableIndex
+        rootView.rightMenuView.noteBackgroundConfigurationView.noteBackgroundOptionalTable.indexOfCheckmarkedCell = theme.noteBackgroundTableIndex
+        rootView.rightMenuView.languageConfigurationView.languageOptionalTable.indexOfCheckmarkedCell = UserDefaults.standard.integer(forKey: "userLanguageTableIndex")
+    }
+    
     //MARK: 配置背景
     func configWallViewBackgroundImage() {
-        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.wallBackgrounds[theme.noteWallBackgroundTableIndex].fileName)
+        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.allWallBackgrounds[theme.noteWallBackgroundTableIndex].fileName)
 //        let decodedData = NSData(base64Encoded:theme.noteWallBackgroundBase64)
 //        if decodedData != nil {
 //            let decodedimage = UIImage(data: decodedData! as Data)
@@ -89,7 +94,7 @@ class DragNoteViewController: UIViewController {
     
     //MARK: 通过背景选择表改变背景
     func setWallBackgroundImageThroughBackgroundOptionalTable(cellIndex: Int) {
-        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.wallBackgrounds[cellIndex].fileName)
+        wallView.backgroundImageView.image = UIImage(named: AllWallBackground.allWallBackgrounds[cellIndex].fileName)
         theme.noteWallBackgroundTableIndex = cellIndex
 //        if let newImageBase64String = image.base64String {
 //            theme.noteWallBackgroundBase64 = newImageBase64String
@@ -116,6 +121,24 @@ class DragNoteViewController: UIViewController {
         }
         saveTheme()
     }
+    
+    //MARK: 通过语言选择表改变语言
+    func setLanguageThroughLanguageOptionalTable(cellIndex: Int) {
+        UserDefaults.standard.set(String(cellIndex), forKey: "userLanguageTableIndex")
+        rootView.reloadRightMenu()
+        wallView.hideCoverView()
+        
+        AllWallBackground.reload()
+        AllFont.reload()
+        AllNoteBackground.reload()
+        AllLanguage.reload()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+            self.showRightMenuView()
+            self.checkMarkAlltables()
+        }
+    }
+    
     
     
     func showRightMenuView() {
@@ -192,7 +215,7 @@ class DragNoteViewController: UIViewController {
             if let jsonData = try? Data(contentsOf: url) {
                 if let themeToLoad = Theme(json: jsonData) {
                     theme = themeToLoad
-                    if theme.noteBackgroundTableIndex >= AllWallBackground.wallBackgrounds.count {
+                    if theme.noteBackgroundTableIndex >= AllWallBackground.allWallBackgrounds.count {
                         theme.noteBackgroundTableIndex = 0
                     }
                     if theme.noteFontTableIndex >= AllFont.allFonts.count {

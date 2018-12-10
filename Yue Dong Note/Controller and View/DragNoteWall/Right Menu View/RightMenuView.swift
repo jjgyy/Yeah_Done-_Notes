@@ -16,6 +16,7 @@ class RightMenuView: UIView {
     var backgroundConfigurationView = BackgroundConfigurationView()
     var fontConfigurationView = FontConfigurationView()
     var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
+    var languageConfigurationView = LanguageConfigurationView()
     
     var controller: DragNoteViewController? {
         get {
@@ -40,6 +41,7 @@ class RightMenuView: UIView {
         addSubview(backgroundConfigurationView)
         addSubview(fontConfigurationView)
         addSubview(noteBackgroundConfigurationView)
+        addSubview(languageConfigurationView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,12 +60,15 @@ class RightMenuView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        rightMenuMainView.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: bounds.height)
-        backgroundConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
-        fontConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
-        noteBackgroundConfigurationView.frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
         
+        rightMenuMainView.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: bounds.height)
         currentSubview = rightMenuMainView
+        
+        for view in subviews {
+            if view is RightMenuBranchView {
+                (view as! RightMenuBranchView).frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
+            }
+        }
     }
     
     func toMain() {
@@ -83,6 +88,11 @@ class RightMenuView: UIView {
     func toNoteBackgroundConfiguration() {
         noteBackgroundConfigurationView.noteBackgroundOptionalTable.markTheCellNeedingMarked()
         transitionAnimationFromRight(to: noteBackgroundConfigurationView)
+    }
+    
+    func toLanguageConfiguration() {
+        languageConfigurationView.languageOptionalTable.markTheCellNeedingMarked()
+        transitionAnimationFromRight(to: languageConfigurationView)
     }
     
     func transitionAnimationFromLeft(to view: UIView) {

@@ -11,7 +11,7 @@ import UIKit
 class RightMenuTable: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var datas = [TableData]()
-    var indexOfCheckmarkedCell = 1
+    var indexOfCheckmarkedCell = 0
     var controller: DragNoteViewController? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {

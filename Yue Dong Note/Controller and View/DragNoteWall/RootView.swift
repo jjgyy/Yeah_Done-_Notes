@@ -38,6 +38,7 @@ class RootView: UIView {
         let rightEdgePanGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(rightEdgePanAction(_:)))
         rightEdgePanGes.edges = .right
         addGestureRecognizer(rightEdgePanGes)
+        addSubview(rightMenuView)
     }
     @objc func rightEdgePanAction( _ sender : UIScreenEdgePanGestureRecognizer) {
         if (sender.state == UIScreenEdgePanGestureRecognizer.State.began) {
@@ -47,9 +48,6 @@ class RootView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if (rightMenuView.superview == nil) {
-            addSubview(rightMenuView)
-        }
         rightMenuView.frame = CGRect(x: bounds.width, y: 0, width: 240.0, height: bounds.height)
     }
     
@@ -64,6 +62,16 @@ class RootView: UIView {
         UIView.animate(withDuration: 0.2) {
             self.rightMenuView.frame.origin.x = self.bounds.width
         }
+    }
+    
+    func reloadRightMenu() {
+
+        UIView.animate(withDuration: 0.2, animations: {self.rightMenuView.frame.origin.x = self.bounds.width}, completion: {_ in
+            self.rightMenuView.removeFromSuperview()
+            self.rightMenuView = RightMenuView()
+            self.addSubview(self.rightMenuView)
+        })
+        
     }
 
 }

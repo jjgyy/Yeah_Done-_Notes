@@ -10,13 +10,6 @@ import UIKit
 
 class RightMenuMainView: UIView {
     
-    var styleConfigurationLabel = RightMenuLabel(text: NSLocalizedString("Style", comment: "样式"))
-        var backgroundConfigurationButton = RightMenuButton(text: NSLocalizedString("Background", comment: "背景"))
-        var fontConfigurationButton = RightMenuButton(text: NSLocalizedString("Font", comment: "字体"))
-        var noteBackgroundConfigurationButton = RightMenuButton(text: NSLocalizedString("Note Style", comment: "便签样式"))
-    
-    var systemConfigurationLabel = RightMenuLabel(text: NSLocalizedString("System", comment: "系统"))
-    
     var rightMenuView: RightMenuView? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -27,6 +20,15 @@ class RightMenuMainView: UIView {
             return nil
         }
     }
+    
+    var styleConfigurationLabel = RightMenuLabel(text: NSLocalizedString("Style", comment: "样式"))
+        var backgroundConfigurationButton = RightMenuButton(text: NSLocalizedString("Background", comment: "背景"))
+        var fontConfigurationButton = RightMenuButton(text: NSLocalizedString("Font", comment: "字体"))
+        var noteBackgroundConfigurationButton = RightMenuButton(text: NSLocalizedString("Note Style", comment: "便签样式"))
+    
+    var systemConfigurationLabel = RightMenuLabel(text: NSLocalizedString("System", comment: "系统"))
+        var languageConfigurationButton = RightMenuButton(text: NSLocalizedString("Language", comment: "语言"))
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +45,9 @@ class RightMenuMainView: UIView {
             noteBackgroundConfigurationButton.addTarget(self, action: #selector(toNoteBackgroundConfigurationView), for: .touchUpInside)
         
         addSubview(systemConfigurationLabel)
+        
+            addSubview(languageConfigurationButton)
+            languageConfigurationButton.addTarget(self, action: #selector(toLanguageConfigurationView), for: .touchUpInside)
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -61,13 +66,18 @@ class RightMenuMainView: UIView {
         rightMenuView?.toNoteBackgroundConfiguration()
     }
     
+    @objc func toLanguageConfigurationView() {
+        rightMenuView?.toLanguageConfiguration()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        styleConfigurationLabel.frame = CGRect(x: 10.0, y: 35.0, width: bounds.width, height: 50.0)
-            backgroundConfigurationButton.frame = CGRect(x: 0.0, y: 85.0, width: bounds.width, height: 45.0)
-            fontConfigurationButton.frame = CGRect(x: 0.0, y: 130.0, width: bounds.width, height: 45.0)
-            noteBackgroundConfigurationButton.frame = CGRect(x: 0.0, y: 175.0, width: bounds.width, height: 45.0)
-        systemConfigurationLabel.frame = CGRect(x: 10.0, y: 230.0, width: bounds.width, height: 50.0)
+        styleConfigurationLabel.frame = CGRect(x: 10, y: 35, width: bounds.width, height: 50)
+            backgroundConfigurationButton.frame = CGRect(x: 0, y: 85, width: bounds.width, height: 45)
+            fontConfigurationButton.frame = CGRect(x: 0, y: 130, width: bounds.width, height: 45)
+            noteBackgroundConfigurationButton.frame = CGRect(x: 0, y: 175, width: bounds.width, height: 45)
+        systemConfigurationLabel.frame = CGRect(x: 10, y: 230, width: bounds.width, height: 50)
+            languageConfigurationButton.frame = CGRect(x: 0, y: 280, width: bounds.width, height: 45)
     }
     
 }
