@@ -10,15 +10,6 @@ import UIKit
 
 class RightMenuView: UIView {
     
-    var currentSubview: UIView?
-    
-    var rightMenuMainView = RightMenuMainView()
-    var backgroundConfigurationView = BackgroundConfigurationView()
-    var fontConfigurationView = FontConfigurationView()
-    var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
-    var languageConfigurationView = LanguageConfigurationView()
-    var recycleBinView = RecycleBinView()
-    
     var controller: DragNoteViewController? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -31,6 +22,19 @@ class RightMenuView: UIView {
             return nil
         }
     }
+
+    var currentSubview: UIView?
+    
+    
+    //--------------------------------菜单选项配置-------------------------------
+    
+    var rightMenuMainView = RightMenuMainView()
+    var backgroundConfigurationView = BackgroundConfigurationView()
+    var fontConfigurationView = FontConfigurationView()
+    var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
+    var languageConfigurationView = LanguageConfigurationView()
+    var recycleBinView = RecycleBinView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,29 +53,6 @@ class RightMenuView: UIView {
         super.init(coder: aDecoder)
     }
     
-    
-    func addSwipeGes() {
-        let swipeTheMenuGesRec = UISwipeGestureRecognizer(target: self, action: #selector(swipTheMenuGesAction(_:)))
-        swipeTheMenuGesRec.direction = .right
-        addGestureRecognizer(swipeTheMenuGesRec)
-    }
-    @objc func swipTheMenuGesAction( _ sender : UISwipeGestureRecognizer) {
-        controller?.hideRightMenuView()
-    }
-    
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        rightMenuMainView.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: bounds.height)
-        currentSubview = rightMenuMainView
-        
-        for view in subviews {
-            if view is RightMenuBranchView {
-                (view as! RightMenuBranchView).frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
-            }
-        }
-    }
     
     func toMain() {
         transitionAnimationFromLeft(to: rightMenuMainView)
@@ -107,6 +88,24 @@ class RightMenuView: UIView {
         transitionAnimationFromRight(to: recycleBinView)
     }
     
+    //-----------------------------------------------------------------------
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        rightMenuMainView.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: bounds.height)
+        currentSubview = rightMenuMainView
+        
+        for view in subviews {
+            if view is RightMenuBranchView {
+                (view as! RightMenuBranchView).frame = CGRect(x: bounds.width, y: 0.0, width: bounds.width, height: bounds.height)
+            }
+        }
+    }
+    
+    
+    
     func transitionAnimationFromLeft(to view: UIView) {
         view.frame.origin.x = -(self.bounds.width)
         UIView.animate(withDuration: 0.2) {
@@ -116,6 +115,8 @@ class RightMenuView: UIView {
         currentSubview = view
     }
     
+    
+    
     func transitionAnimationFromRight(to view: UIView) {
         view.frame.origin.x = self.bounds.width
         UIView.animate(withDuration: 0.2) {
@@ -124,5 +125,18 @@ class RightMenuView: UIView {
         }
         currentSubview = view
     }
+    
+    
+    
+    func addSwipeGes() {
+        let swipeTheMenuGesRec = UISwipeGestureRecognizer(target: self, action: #selector(swipTheMenuGesAction(_:)))
+        swipeTheMenuGesRec.direction = .right
+        addGestureRecognizer(swipeTheMenuGesRec)
+    }
+    @objc func swipTheMenuGesAction( _ sender : UISwipeGestureRecognizer) {
+        controller?.hideRightMenuView()
+    }
+    
+    
 
 }

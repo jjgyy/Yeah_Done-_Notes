@@ -12,7 +12,7 @@ import UIKit
 
 struct Note: Codable {
     
-    var identifier = NSTimeIntervalSince1970
+    var identifier = Date().timeIntervalSince1970
     var text: String
     var frame = NoteFrame()
 
@@ -21,6 +21,18 @@ struct Note: Codable {
         var y: Float = Float()
         var width: Float = Float()
         var height: Float = Float()
+    }
+    
+    var json: Data? {
+        return try? JSONEncoder().encode(self)
+    }
+    
+    init?(json: Data) {
+        if let newValue = try? JSONDecoder().decode(Note.self, from: json) {
+            self = newValue
+        } else {
+            return nil
+        }
     }
     
     init(text: String) {
@@ -39,6 +51,15 @@ struct Note: Codable {
         self.frame.height = height
         self.frame.x = x
         self.frame.y = y
+    }
+    
+    init(identifier: TimeInterval, text: String, frame: CGRect) {
+        self.identifier = identifier
+        self.text = text
+        self.frame.x = Float(frame.origin.x)
+        self.frame.y = Float(frame.origin.y)
+        self.frame.width = Float(frame.width)
+        self.frame.height = Float(frame.height)
     }
     
 }

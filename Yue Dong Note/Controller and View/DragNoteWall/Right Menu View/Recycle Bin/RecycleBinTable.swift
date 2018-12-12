@@ -21,5 +21,5 @@ class RecycleBinTable: RightMenuTable {
         controller?.createNoteThroughRecycleBinTable(cellIndex: indexPath.row)
     }
 
-
+    
 }

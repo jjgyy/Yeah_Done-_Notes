@@ -32,4 +32,23 @@ struct NoteWall: Codable {
         }
     }
     
+    mutating func add(_ note: Note) {
+        notes.append(note)
+    }
+    
+    
+    mutating func update(identifier: TimeInterval, value: Note) {
+        for index in 0..<notes.count {
+            if notes[index].identifier == identifier {
+                notes[index] = value
+                break
+            }
+        }
+    }
+    
+    mutating func remove(identifier: TimeInterval) {
+        notes = notes.filter {$0.identifier != identifier}
+    }
+    
+    
 }

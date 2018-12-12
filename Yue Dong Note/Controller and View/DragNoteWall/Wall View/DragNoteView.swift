@@ -19,8 +19,22 @@ class DragNoteView: UIView {
     var noteBackgroundView = UIImageView()
     var textLabel = UILabel()
     var textView = UITextView()
-    var noteNail = UIImageView()
-    private lazy var originalBounds = bounds
+    
+    var identifier = TimeInterval()
+    var text: String {
+        set {
+            
+        }
+        get {
+            if let string = textLabel.attributedText?.string {
+                return string
+            } else {
+                return textView.text
+            }
+        }
+    }
+
+    
     private var redCorner = UIImageView()
     var font: UIFont? {
         willSet {
@@ -47,6 +61,8 @@ class DragNoteView: UIView {
     //init
     init(note: Note, fontName: String, fontSize: CGFloat, backgroundName: String) {
         super.init(frame: note.frame.uiFrame)
+        
+        identifier = note.identifier
         
         addSubview(noteBackgroundView)
         noteBackgroundView.image = UIImage(named: backgroundName)
@@ -115,6 +131,11 @@ class DragNoteView: UIView {
     func startEditingText() {
         textView.frame = CGRect(x: 13.0, y: 17.0, width: bounds.width - 26.0, height: bounds.height - 40.0)
         textView.attributedText = textLabel.attributedText
+        if textLabel.attributedText?.string == "" {
+            if let index = controller?.theme.noteFontTableIndex {
+                textView.font = UIFont(name: AllFont.allFonts[index].fileName, size: CGFloat(AllFont.allFontsRelativeSize[index]))
+            }
+        }
         textView.isHidden = false
         textLabel.isHidden = true
         textView.becomeFirstResponder()
@@ -124,11 +145,13 @@ class DragNoteView: UIView {
     func endEditingText() {
         if textView.isFirstResponder {
             textView.resignFirstResponder()
-            textLabel.attributedText = textView.attributedText
-            textView.isHidden = true
-            textLabel.isHidden = false
-            adjustTextLabel()
         }
+        textLabel.attributedText = textView.attributedText
+        textView.isHidden = true
+        textLabel.isHidden = false
+        adjustTextLabel()
+        controller?.noteWall.update(identifier: self.identifier, value: self.toNote())
+        controller?.saveNoteToFileSystem(note: self.toNote())
     }
     
     
@@ -149,7 +172,6 @@ class DragNoteView: UIView {
     }
     
 
-
     //拖动view
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
@@ -167,6 +189,8 @@ class DragNoteView: UIView {
         removeRedCornerFromSuperView()
         if !deleteIfGetIntoRubbishRegion(touches) {
             resetFrameIfOutOfScreen()
+            controller?.noteWall.update(identifier: self.identifier, value: self.toNote())
+            controller?.saveNoteToFileSystem(note: self.toNote())
         }
     }
     
@@ -236,53 +260,23 @@ class DragNoteView: UIView {
         let touch = (touches as NSSet).anyObject() as! UITouch
         let nowLocation = touch.location(in: superview)
         if nowLocation.x <= 100.0 && nowLocation.y >= superview!.bounds.height - 100.0 {
-            controller?.recycleBin.add(dragNoteView2Note(view: self))
+            controller?.noteWall.remove(identifier: self.identifier)
+            controller?.deleteNoteFromFileSystem(note: self.toNote())
+            controller?.recycleBin.add(self.toNote())
             controller?.saveRecycleBin()
             removeFromSuperview()
             return true
         }
         return false
     }
+    
     //MARK: view 转 model
     private func dragNoteView2Note(view: DragNoteView) -> Note {
         return Note(text: view.textLabel.attributedText!.string, width: Float(view.frame.width), height: Float(view.frame.height), x: Float(view.frame.origin.x), y: Float(view.frame.origin.y))
     }
     
-    
-    //外框比例放大
-    func zoom(with ratio: CGFloat) {
-        originalBounds = bounds
-        let noteBoundsOffsetX = bounds.width * (ratio - 1.0) / 2.0
-        let noteBoundsOffsetY = bounds.height * (ratio - 1.0) / 2.0
-        bounds.origin.x -= noteBoundsOffsetX
-        bounds.origin.y -= noteBoundsOffsetY
-        bounds.size.width *= ratio
-        bounds.size.height *= ratio
-    }
-    func cancelZoom() {
-        bounds = originalBounds
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        //获取绘图上下文
-//        guard let context = UIGraphicsGetCurrentContext() else { return }
-//
-//        //创建并设置路径
-//        let path = CGMutablePath()
-//        path.move(to: CGPoint(x:bounds.maxX, y:bounds.maxY))
-//        path.addLine(to:CGPoint(x:bounds.minX, y:bounds.minY))
-//
-//        //添加路径到图形上下文
-//        context.addPath(path)
-//
-//        //设置笔触颜色
-//        context.setStrokeColor(UIColor.orange.cgColor)
-//        //设置笔触宽度
-//        context.setLineWidth(6)
-//
-//        //绘制路径
-//        context.strokePath()
+    func toNote() -> Note {
+        return Note(identifier: self.identifier, text: self.text, frame: self.frame)
     }
     
     

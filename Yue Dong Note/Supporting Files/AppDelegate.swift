@@ -19,11 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        saveDragNoteViewControllerIfRoot()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        saveDragNoteViewControllerIfRoot()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -35,20 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveDragNoteViewControllerIfRoot()
     }
     
-    func saveDragNoteViewControllerIfRoot() {
-        if window?.rootViewController is DragNoteViewController {
-            let dragNoteViewController = (window?.rootViewController as! DragNoteViewController)
-            dragNoteViewController.saveNoteWall()
-            dragNoteViewController.saveTheme()
-        }
-    }
-    
-    func reLoad() {
-        window?.rootViewController = DragNoteViewController()
-    }
 
 }
 
@@ -78,19 +64,15 @@ class BundleEx: Bundle {
             return nil
         }
         
-        
-        
         guard let tableIndex = Int(userLanguageTableIndex) else {
             print("couldn't make userLanguageTableIndex:String to tableIndex:Int")
             return nil
         }
         
-        
         guard let languageBundlePath = Bundle.main.path(forResource: AllLanguage.allLanguages[tableIndex].fileName, ofType: "lproj") else {
             print("couldn't find language bundle path \(AllLanguage.allLanguages[tableIndex].fileName)")
             return nil
         }
-        
         
         guard let languageBundle = Bundle.init(path: languageBundlePath) else {
             print("couldn't init language bundle with bundle path \(languageBundlePath)")

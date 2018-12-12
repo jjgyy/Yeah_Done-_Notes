@@ -21,8 +21,8 @@ class BackgroundOptionalTable: RightMenuTable {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexOfCheckmarkedCell = indexPath.row
         markTheCellNeedingMarked()
-        controller!.setWallBackgroundImageThroughBackgroundOptionalTable(cellIndex: indexPath.row)
+        controller?.setWallBackgroundImageThroughBackgroundOptionalTable(cellIndex: indexPath.row)
     }
-    
+        
     
 }

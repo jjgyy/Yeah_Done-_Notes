@@ -23,22 +23,33 @@ class DragNoteViewController: UIViewController {
     //MARK: 新增Note
     @IBAction func addNewNote(_ sender: UIButton) {
         addNewNoteButton.isHidden = true
+        
         let newNote = Note(text: "", width: 150, height: 200, x: Float(wallView.center.x) - 75, y: Float(wallView.center.y) - 100)
+        noteWall.add(newNote)
+        saveNoteToFileSystem(note: newNote)
+        
         let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
         newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
         newDragNoteView.startEditingText()
-        noteWall.notes += [newNote]
-        saveNoteWall()
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        addNewNoteButton.isHidden = false
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkFileSystem()
+        
+        configAddNewNoteButton()
+        
         loadTheme()
         checkMarkAlltables()
-        configAddNewNoteButton()
         configWallViewBackgroundImage()
         
         loadNoteWall()
@@ -64,6 +75,7 @@ class DragNoteViewController: UIViewController {
         rootView.rightMenuView.languageConfigurationView.languageOptionalTable.indexOfCheckmarkedCell = UserDefaults.standard.integer(forKey: "userLanguageTableIndex")
     }
     
+    
     //MARK: 配置背景
     func configWallViewBackgroundImage() {
         wallView.backgroundImageView.image = UIImage(named: AllWallBackground.allWallBackgrounds[theme.noteWallBackgroundTableIndex].fileName)
@@ -79,9 +91,6 @@ class DragNoteViewController: UIViewController {
     //MARK: 配置新便签按钮
     func configAddNewNoteButton() {
         addNewNoteButton.setBackgroundImage(UIImage(named: "addNewNote"), for: UIControl.State.normal)
-        addLongPressRecognizerToAddNewNoteButton()
-    }
-    func addLongPressRecognizerToAddNewNoteButton() {
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(noteLongPressAction(_:)))
         longPressGes.minimumPressDuration = 1
         longPressGes.numberOfTouchesRequired = 1
@@ -94,6 +103,8 @@ class DragNoteViewController: UIViewController {
         }
     }
     
+    
+
     
     //MARK: 通过背景选择表改变背景
     func setWallBackgroundImageThroughBackgroundOptionalTable(cellIndex: Int) {
@@ -142,15 +153,17 @@ class DragNoteViewController: UIViewController {
         }
     }
     
-    
+    //MARK: 通过回收站创建便签
     func createNoteThroughRecycleBinTable(cellIndex: Int) {
         let newNote = Note(text: recycleBin.deletedNotes[cellIndex].text, width: recycleBin.deletedNotes[cellIndex].frame.width, height: recycleBin.deletedNotes[cellIndex].frame.height, x: 50, y: 200)
+        
         let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
-        wallView.showCoverView()
+        wallView.bringSubviewToFront(wallView.coverView)
         newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
-        noteWall.notes += [newNote]
-        saveNoteWall()
+        
+        noteWall.add(newNote)
+        saveNoteToFileSystem(note: newNote)
     }
     
     
@@ -166,48 +179,42 @@ class DragNoteViewController: UIViewController {
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        addNewNoteButton.isHidden = false
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        saveNoteWall()
-    }
-    
     //MARK: 读取便签墙
     private func loadNoteWall() {
-        if let url = try? FileManager.default.url(
+        if let dirUrl = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
-            ).appendingPathComponent("NoteWall.json") {
-            if let jsonData = try? Data(contentsOf: url) {
-                if let noteWallToLoad = NoteWall(json: jsonData) {
-                    noteWall = noteWallToLoad
+            ).appendingPathComponent("Notes") {
+            if let contentsOfPath = try? FileManager.default.contentsOfDirectory(atPath: dirUrl.path) {
+                for content in contentsOfPath {
+                    if let url = try? FileManager.default.url(
+                        for: .documentDirectory,
+                        in: .userDomainMask,
+                        appropriateFor: nil,
+                        create: true
+                        ).appendingPathComponent("Notes/" + content) {
+                        if let jsonData = try? Data(contentsOf: url) {
+                            if let noteToLoad = Note(json: jsonData) {
+                                noteWall.add(noteToLoad)
+                            }
+                        }
+                    }
                 }
             }
         }
     }
     
-    //MARK: 存储便签墙
-    func saveNoteWall() {
-        noteWall.notes = []
-        for view in wallView.subviews {
-            if view is DragNoteView {
-                let note = dragNoteView2Note(view: view as! DragNoteView)
-                noteWall.notes += [note]
-            }
-        }
+    //MARK: 存储Note单文件
+    func saveNoteToFileSystem(note: Note) {
         if let url = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
-            ).appendingPathComponent("NoteWall.json") {
-            if let json = noteWall.json {
+            ).appendingPathComponent("Notes/" + String(note.identifier) + ".json") {
+            if let json = note.json {
                 do {
                     try json.write(to: url)
                 } catch let error {
@@ -217,7 +224,23 @@ class DragNoteViewController: UIViewController {
         }
     }
     
+    //MARK: 删除Note单文件
+    func deleteNoteFromFileSystem(note: Note) {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("Notes/" + String(note.identifier) + ".json") {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch let error {
+                print("couldn't delete \(error)")
+            }
+        }
+    }
     
+    //MARK: 读取回收站
     private func loadRecycleBin() {
         if let url = try? FileManager.default.url(
             for: .documentDirectory,
@@ -233,7 +256,7 @@ class DragNoteViewController: UIViewController {
         }
     }
     
-    
+    //MARK: 存储回收站
     func saveRecycleBin() {
         if let url = try? FileManager.default.url(
             for: .documentDirectory,
@@ -277,6 +300,7 @@ class DragNoteViewController: UIViewController {
         }
     }
     
+    
     //MARK: 存储主题
     func saveTheme() {
         if let url = try? FileManager.default.url(
@@ -296,12 +320,17 @@ class DragNoteViewController: UIViewController {
     }
     
     
-    //MARK: view 转 model
-    private func dragNoteView2Note(view: DragNoteView) -> Note {
-        return Note(text: view.textLabel.attributedText!.string, width: Float(view.frame.width), height: Float(view.frame.height), x: Float(view.frame.origin.x), y: Float(view.frame.origin.y))
+    func checkFileSystem() {
+        let fileManager = FileManager.default
+        let filePath = NSHomeDirectory() + "/Documents/Notes"
+        let exist = fileManager.fileExists(atPath: filePath)
+        if !exist {
+            print("not exist /Notes, try to create it")
+            let myDire: String = NSHomeDirectory() + "/Documents/Notes"
+            let fileManager = FileManager.default
+            try! fileManager.createDirectory(atPath: myDire, withIntermediateDirectories: true, attributes: nil)
+        }
     }
-    
-    
 
 }
 

@@ -46,6 +46,7 @@
 		18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30421B95C3400C5C966 /* xindi.TTF */; };
 		18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30621B95D7B00C5C966 /* myWorld.TTF */; };
 		18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30821B95F8200C5C966 /* taotao.TTF */; };
+		18DEA53921BFBB6A000A0C65 /* hanyi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18DEA53821BFBB6A000A0C65 /* hanyi.TTF */; };
 		18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E455EA21B77AEE00C9315D /* NoteWall.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		18D7E30421B95C3400C5C966 /* xindi.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = xindi.TTF; sourceTree = "<group>"; };
 		18D7E30621B95D7B00C5C966 /* myWorld.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = myWorld.TTF; sourceTree = "<group>"; };
 		18D7E30821B95F8200C5C966 /* taotao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = taotao.TTF; sourceTree = "<group>"; };
+		18DEA53821BFBB6A000A0C65 /* hanyi.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanyi.TTF; sourceTree = "<group>"; };
 		18E455EA21B77AEE00C9315D /* NoteWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +273,7 @@
 		18D7E30021B959BB00C5C966 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				18DEA53821BFBB6A000A0C65 /* hanyi.TTF */,
 				18C050DB21BD766500FCF31A /* heibanbao.TTF */,
 				18D7E30821B95F8200C5C966 /* taotao.TTF */,
 				18D7E30621B95D7B00C5C966 /* myWorld.TTF */,
@@ -344,6 +347,7 @@
 				18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */,
 				18C050DC21BD766500FCF31A /* heibanbao.TTF in Resources */,
 				18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */,
+				18DEA53921BFBB6A000A0C65 /* hanyi.TTF in Resources */,
 				18C050D721BD5F6200FCF31A /* Localizable.strings in Resources */,
 				18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */,
 				180CDFFF21B653C000D8EC17 /* Assets.xcassets in Resources */,
