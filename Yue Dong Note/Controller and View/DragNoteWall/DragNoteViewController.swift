@@ -52,7 +52,7 @@ class DragNoteViewController: UIViewController {
         checkMarkAlltables()
         configWallViewBackgroundImage()
         
-        loadNoteWall()
+        loadAllNotes()
         for note in noteWall.notes {
             let newDragNoteView = DragNoteView(note: note, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
             wallView.addSubview(newDragNoteView)
@@ -179,8 +179,9 @@ class DragNoteViewController: UIViewController {
     }
     
     
+    
     //MARK: 读取便签墙
-    private func loadNoteWall() {
+    private func loadAllNotes() {
         if let dirUrl = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
@@ -274,6 +275,63 @@ class DragNoteViewController: UIViewController {
         }
     }
     
+    //MARK: 存储回忆墙
+    func saveNoteWall() {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("NoteWalls/" + String(Date().timeIntervalSince1970)) {
+            if let json = noteWall.json {
+                do {
+                    try json.write(to: url)
+                } catch let error {
+                    print("couldn't save \(error)")
+                }
+            }
+        }
+    }
+    
+    func deleteNoteWall(fileName: String) {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("NoteWalls/" + fileName) {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch let error {
+                print("couldn't delete \(error)")
+            }
+        }
+    }
+    
+    //MARK: 读取回忆墙列表
+    func getNoteWallFileList() -> [TableData] {
+        var result = [TableData]()
+        if let dirUrl = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("NoteWalls") {
+            if let contentsOfPath = try? FileManager.default.contentsOfDirectory(atPath: dirUrl.path) {
+                for content in contentsOfPath {
+                    guard let timeInterval = TimeInterval(content) else {
+                        continue
+                    }
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    let date = Date(timeIntervalSince1970: timeInterval)
+                    result.append(TableData(uiName: dateFormatter.string(from: date), fileName: content))
+                }
+            }
+        }
+        return result
+    }
+    
     
     //MARK: 读取主题
     private func loadTheme() {
@@ -322,11 +380,17 @@ class DragNoteViewController: UIViewController {
     
     func checkFileSystem() {
         let fileManager = FileManager.default
-        let filePath = NSHomeDirectory() + "/Documents/Notes"
-        let exist = fileManager.fileExists(atPath: filePath)
-        if !exist {
+        let pathOfNotes = NSHomeDirectory() + "/Documents/Notes"
+        if !fileManager.fileExists(atPath: pathOfNotes) {
             print("not exist /Notes, try to create it")
             let myDire: String = NSHomeDirectory() + "/Documents/Notes"
+            let fileManager = FileManager.default
+            try! fileManager.createDirectory(atPath: myDire, withIntermediateDirectories: true, attributes: nil)
+        }
+        let pathOfNoteWall = NSHomeDirectory() + "/Documents/NoteWalls"
+        if !fileManager.fileExists(atPath: pathOfNoteWall) {
+            print("not exist /NoteWalls, try to create it")
+            let myDire: String = NSHomeDirectory() + "/Documents/NoteWalls"
             let fileManager = FileManager.default
             try! fileManager.createDirectory(atPath: myDire, withIntermediateDirectories: true, attributes: nil)
         }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800154A21C266BA008E0652 /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800154921C266BA008E0652 /* MemoryView.swift */; };
+		1800154C21C266CA008E0652 /* MemoryTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800154B21C266CA008E0652 /* MemoryTable.swift */; };
 		180CDFF821B653C000D8EC17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CDFF721B653C000D8EC17 /* AppDelegate.swift */; };
 		180CDFFD21B653C000D8EC17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180CDFFB21B653C000D8EC17 /* Main.storyboard */; };
 		180CDFFF21B653C000D8EC17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180CDFFE21B653C000D8EC17 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1800154921C266BA008E0652 /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
+		1800154B21C266CA008E0652 /* MemoryTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTable.swift; sourceTree = "<group>"; };
 		180CDFF421B653C000D8EC17 /* Yeah Done!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yeah Done!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180CDFF721B653C000D8EC17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180CDFFC21B653C000D8EC17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1800154D21C266CE008E0652 /* Memory Wall */ = {
+			isa = PBXGroup;
+			children = (
+				1800154921C266BA008E0652 /* MemoryView.swift */,
+				1800154B21C266CA008E0652 /* MemoryTable.swift */,
+			);
+			path = "Memory Wall";
+			sourceTree = "<group>";
+		};
 		180CDFEB21B653C000D8EC17 = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +244,7 @@
 				18C050CE21BD30B700FCF31A /* Note Background Configuration */,
 				18D1673621BE35DA0052FC07 /* Language Configuration */,
 				1896069021BEC43300D7504A /* Recycle Bin */,
+				1800154D21C266CE008E0652 /* Memory Wall */,
 			);
 			path = "Right Menu View";
 			sourceTree = "<group>";
@@ -371,6 +385,7 @@
 				18D1673821BE35FE0052FC07 /* LanguageOptionalTable.swift in Sources */,
 				1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */,
 				18C050D221BD3C2200FCF31A /* RightMenuLabel.swift in Sources */,
+				1800154C21C266CA008E0652 /* MemoryTable.swift in Sources */,
 				185EF2CF21BC36D100D98E29 /* RightMenuBranchView.swift in Sources */,
 				1896069221BEC52800D7504A /* RecycleBin.swift in Sources */,
 				1896068D21BEC3CB00D7504A /* RecycleBinView.swift in Sources */,
@@ -394,6 +409,7 @@
 				185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */,
 				185EF2D121BCDAFF00D98E29 /* FontConfigurationView.swift in Sources */,
 				185EF2CD21BC2D9F00D98E29 /* RightMenuButton.swift in Sources */,
+				1800154A21C266BA008E0652 /* MemoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

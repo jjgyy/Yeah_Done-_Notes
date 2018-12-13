@@ -34,6 +34,7 @@ class RightMenuView: UIView {
     var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
     var languageConfigurationView = LanguageConfigurationView()
     var recycleBinView = RecycleBinView()
+    var memoryView = MemoryView()
     
     
     override init(frame: CGRect) {
@@ -48,6 +49,7 @@ class RightMenuView: UIView {
         addSubview(noteBackgroundConfigurationView)
         addSubview(languageConfigurationView)
         addSubview(recycleBinView)
+        addSubview(memoryView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -86,6 +88,16 @@ class RightMenuView: UIView {
             recycleBinView.setNeedsLayout()
         }
         transitionAnimationFromRight(to: recycleBinView)
+    }
+    
+    func toMemory() {
+        if let datas = controller?.getNoteWallFileList() {
+            memoryView.memoryTable.removeFromSuperview()
+            memoryView.memoryTable = MemoryTable(memoryTableDatas: datas)
+            memoryView.addSubview(memoryView.memoryTable)
+            memoryView.setNeedsLayout()
+        }
+        transitionAnimationFromRight(to: memoryView)
     }
     
     //-----------------------------------------------------------------------
