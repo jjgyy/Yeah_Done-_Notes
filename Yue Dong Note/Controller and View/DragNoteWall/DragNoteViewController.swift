@@ -15,6 +15,7 @@ class DragNoteViewController: UIViewController {
     var noteWall = NoteWall()
     var recycleBin = RecycleBin()
     var theme = Theme()
+    var creatingNotesNum = 0
 
     @IBOutlet var rootView: RootView!
         @IBOutlet var wallView: WallView!
@@ -28,6 +29,8 @@ class DragNoteViewController: UIViewController {
         let newNote = Note(text: "", width: 150, height: 200, x: Float(wallView.center.x) - 75, y: Float(wallView.center.y) - 100)
         noteWall.add(newNote)
         saveNoteToFileSystem(note: newNote)
+        
+        addCreatingNotesNum()
         
         let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
@@ -60,6 +63,8 @@ class DragNoteViewController: UIViewController {
         }
         
         loadRecycleBin()
+        
+        loadCreatingNotesNum()
 //        for fontFamilyName in UIFont.familyNames{
 //            print("family"+fontFamilyName)
 //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
@@ -174,21 +179,22 @@ class DragNoteViewController: UIViewController {
             animations: {
                 self.rootView.rightMenuView.frame.origin.x = self.rootView.bounds.width
                 self.wallView.hideCoverView()
+                self.addNewNoteButton.isHidden = true
         }, completion: {_ in
             self.rootView.rightMenuView.toMain()
             let image = self.screenShot()
             let items = [image]
             let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
             self.present(shareController, animated: true, completion: nil)
+            self.addNewNoteButton.isHidden = false
         })
     }
     
-    private func screenShot() -> UIImage{
+    
+    func screenShot() -> UIImage{
         let window = UIApplication.shared.keyWindow!
         UIGraphicsBeginImageContext(window.bounds.size)
-        // 绘图
         window.drawHierarchy(in: window.bounds, afterScreenUpdates: false)
-        // 从图形上下文获取图片
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
@@ -403,6 +409,21 @@ class DragNoteViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    
+    func loadCreatingNotesNum() {
+        creatingNotesNum = UserDefaults.standard.integer(forKey: "creatingNotesNum")
+    }
+    
+    func saveCreatingNotesNum() {
+        UserDefaults.standard.set(creatingNotesNum, forKey: "creatingNotesNum")
+    }
+    
+    func addCreatingNotesNum() {
+        creatingNotesNum += 1
+        saveCreatingNotesNum()
     }
     
     

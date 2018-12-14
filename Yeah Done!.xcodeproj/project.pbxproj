@@ -34,6 +34,8 @@
 		18B287C021B6ABA80059A007 /* DragNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */; };
 		18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C121B6AC0B0059A007 /* DragNoteView.swift */; };
 		18B287C421B6E4E70059A007 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B287C321B6E4E70059A007 /* Note.swift */; };
+		18B386A521C40A8200790D55 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B386A421C40A8200790D55 /* AboutView.swift */; };
+		18B386A821C40D0300790D55 /* RightMenuSubLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B386A721C40D0300790D55 /* RightMenuSubLabel.swift */; };
 		18C050CB21BD2FF400FCF31A /* AllNoteBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C050CA21BD2FF400FCF31A /* AllNoteBackground.swift */; };
 		18C050CD21BD30A600FCF31A /* NoteBackgroundConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C050CC21BD30A600FCF31A /* NoteBackgroundConfigurationView.swift */; };
 		18C050D021BD311E00FCF31A /* NoteBackgroundOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C050CF21BD311E00FCF31A /* NoteBackgroundOptionalTable.swift */; };
@@ -87,6 +89,8 @@
 		18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteViewController.swift; sourceTree = "<group>"; };
 		18B287C121B6AC0B0059A007 /* DragNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragNoteView.swift; sourceTree = "<group>"; };
 		18B287C321B6E4E70059A007 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		18B386A421C40A8200790D55 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		18B386A721C40D0300790D55 /* RightMenuSubLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuSubLabel.swift; sourceTree = "<group>"; };
 		18C050CA21BD2FF400FCF31A /* AllNoteBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNoteBackground.swift; sourceTree = "<group>"; };
 		18C050CC21BD30A600FCF31A /* NoteBackgroundConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBackgroundConfigurationView.swift; sourceTree = "<group>"; };
 		18C050CF21BD311E00FCF31A /* NoteBackgroundOptionalTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteBackgroundOptionalTable.swift; sourceTree = "<group>"; };
@@ -222,6 +226,14 @@
 			path = "Recycle Bin";
 			sourceTree = "<group>";
 		};
+		18B386A621C40A9100790D55 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				18B386A421C40A8200790D55 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		18C050CE21BD30B700FCF31A /* Note Background Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +258,7 @@
 				1824802521BA2289008EA58C /* RightMenuView.swift */,
 				185EF2CE21BC36D100D98E29 /* RightMenuBranchView.swift */,
 				18C050D121BD3C2200FCF31A /* RightMenuLabel.swift */,
+				18B386A721C40D0300790D55 /* RightMenuSubLabel.swift */,
 				185EF2CC21BC2D9F00D98E29 /* RightMenuButton.swift */,
 				185EF2D721BCE40600D98E29 /* RightMenuTable.swift */,
 				185EF2CB21BC2AD600D98E29 /* Main */,
@@ -256,6 +269,7 @@
 				18D1673621BE35DA0052FC07 /* Language Configuration */,
 				1896069021BEC43300D7504A /* Recycle Bin */,
 				1800154D21C266CE008E0652 /* Memory Wall */,
+				18B386A621C40A9100790D55 /* About */,
 			);
 			path = "Right Menu View";
 			sourceTree = "<group>";
@@ -399,6 +413,7 @@
 				18C050D221BD3C2200FCF31A /* RightMenuLabel.swift in Sources */,
 				1800154C21C266CA008E0652 /* MemoryTable.swift in Sources */,
 				185EF2CF21BC36D100D98E29 /* RightMenuBranchView.swift in Sources */,
+				18B386A821C40D0300790D55 /* RightMenuSubLabel.swift in Sources */,
 				1896069221BEC52800D7504A /* RecycleBin.swift in Sources */,
 				1896068D21BEC3CB00D7504A /* RecycleBinView.swift in Sources */,
 				18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */,
@@ -417,6 +432,7 @@
 				18C050CB21BD2FF400FCF31A /* AllNoteBackground.swift in Sources */,
 				185EF2D421BCE09400D98E29 /* AllFont.swift in Sources */,
 				185EF2D621BCE38800D98E29 /* FontOptionalTable.swift in Sources */,
+				18B386A521C40A8200790D55 /* AboutView.swift in Sources */,
 				1824802621BA2289008EA58C /* RightMenuView.swift in Sources */,
 				185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */,
 				185EF2D121BCDAFF00D98E29 /* FontConfigurationView.swift in Sources */,

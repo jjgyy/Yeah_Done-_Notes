@@ -5,6 +5,7 @@
   Created by Apple on 2018/12/9.
   Copyright © 2018 Young. All rights reserved.
 */
+"App Name" = "Yearning Notes";
 
 "Back" = "Back";
 
@@ -38,5 +39,11 @@
 
 "Share" = "Share";
 "Share Screenshot" = "Share Notes Screenshot";
+
+"About" = "About";
+"using days" = "days with you";
+
+"Statistics" = "Statistics";
+"creating number" = "Notes Number";
 
 

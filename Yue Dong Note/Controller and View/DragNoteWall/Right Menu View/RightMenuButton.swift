@@ -11,6 +11,7 @@ import UIKit
 class RightMenuButton: UIButton {
     
     var textLabel = UILabel()
+    var infoLabel = UILabel()
 
     init(text: String) {
         super.init(frame: CGRect.zero)
@@ -19,13 +20,29 @@ class RightMenuButton: UIButton {
         addSubview(textLabel)
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
     }
+    
+    init(text: String, info: String) {
+        super.init(frame: CGRect.zero)
+        textLabel.text = text
+        textLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        addSubview(textLabel)
+        infoLabel.text = info
+        infoLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+        infoLabel.textColor = UIColor.gray
+        addSubview(infoLabel)
+        backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        textLabel.frame = CGRect(x: 30.0, y: 0.0, width: bounds.width, height: bounds.height)
+        textLabel.frame = CGRect(x: 30, y: 0, width: bounds.width, height: bounds.height)
+        infoLabel.frame = CGRect(x: bounds.width - 45, y: 0, width: 45, height: bounds.height)
     }
     
     override func draw(_ rect: CGRect) {

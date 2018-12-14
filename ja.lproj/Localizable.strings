@@ -5,6 +5,8 @@
   Created by Apple on 2018/12/9.
   Copyright © 2018 Young. All rights reserved.
 */
+"App Name" = "Yearning付箋";
+
 
 "Back" = "戻る";
 
@@ -38,3 +40,8 @@
 "Share" = "シェア";
 "Share Screenshot" = "スクリーンショットシェア";
 
+"About" = "情報";
+"using days" = "あなたとの日々";
+
+"Statistics" = "統計";
+"creating number" = "付笺の総数";

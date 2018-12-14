@@ -5,6 +5,8 @@
   Created by Apple on 2018/12/9.
   Copyright © 2018 Young. All rights reserved.
 */
+"App Name" = "悅然便箋";
+
 
 "Back" = "返回";
 
@@ -37,3 +39,9 @@
 
 "Share" = "分享";
 "Share Screenshot" = "分享便箋截圖";
+
+"About" = "關於";
+"using days" = "與你相伴的日子";
+
+"Statistics" = "统计";
+"creating number" = "寫過的便箋數量";

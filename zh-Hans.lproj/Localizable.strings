@@ -5,6 +5,8 @@
   Created by Apple on 2018/12/9.
   Copyright © 2018 Young. All rights reserved.
 */
+"App Name" = "悦然便签";
+
 
 "Back" = "返回";
 
@@ -19,7 +21,7 @@
 "Function" = "功能";
 
 "frosty window" = "雾窗";
-"illustration of leaves" = "淡雅树叶插画";
+"illustration of leaves" = "树叶插画";
 "ink" = "墨水";
 
 "fine pen handwriting" = "细钢笔手写";
@@ -37,3 +39,9 @@
 
 "Share" = "分享";
 "Share Screenshot" = "分享便签截图";
+
+"About" = "关于";
+"using days" = "与你相伴的日子";
+
+"Statistics" = "统计";
+"creating number" = "写过的便签数量";

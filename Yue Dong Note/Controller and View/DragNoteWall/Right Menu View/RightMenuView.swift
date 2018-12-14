@@ -36,6 +36,7 @@ class RightMenuView: UIView {
     var recycleBinView = RecycleBinView()
     var memoryView = MemoryView()
     var languageConfigurationView = LanguageConfigurationView()
+    var aboutView = AboutView()
 
     
     
@@ -53,6 +54,7 @@ class RightMenuView: UIView {
         addSubview(recycleBinView)
         addSubview(memoryView)
         addSubview(languageConfigurationView)
+        addSubview(aboutView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -105,6 +107,11 @@ class RightMenuView: UIView {
     func toLanguageConfiguration() {
         languageConfigurationView.languageOptionalTable.markTheCellNeedingMarked()
         transitionAnimationFromRight(to: languageConfigurationView)
+    }
+    
+    func toAbout() {
+        aboutView.updateCreatingNotesNum()
+        transitionAnimationFromRight(to: aboutView)
     }
     
     //-----------------------------------------------------------------------
