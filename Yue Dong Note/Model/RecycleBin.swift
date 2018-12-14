@@ -33,6 +33,10 @@ struct RecycleBin: Codable {
         }
     }
     
+    mutating func remove(index: Int) {
+        deletedNotes.remove(at: index)
+    }
+    
     func toTableDatas() -> [TableData] {
         var tableDatas = [TableData]()
         for note in deletedNotes {

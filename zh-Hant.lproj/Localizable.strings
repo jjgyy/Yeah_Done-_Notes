@@ -11,27 +11,29 @@
 "Style" = "樣式";
 "Background" = "背景";
 "Font" = "字體";
-"Note Style" = "便利貼樣式";
+"Note Style" = "便箋樣式";
 
 "System" = "系統";
 "Language" = "語言";
 "Recycle Bin" = "回收站";
+"Function" = "功能";
 
-
-"lake" = "湖水";
-"sea blue wall" = "海藍色高墻";
-"icy glass" = "結冰玻璃";
 "frosty window" = "霧窗";
 "illustration of leaves" = "樹葉插畫";
+"ink" = "墨水";
 
 "fine pen handwriting" = "細鋼筆手寫";
 "fine pen smooth" = "細鋼筆圓滑";
 "chalk handwriting" = "粉筆手寫";
 
-"3D light yellow note" = "3D淡黃色便利貼";
-"3D light pink note" = "3D淡粉色便利貼";
+"3D light yellow note" = "3D淡黃色便箋";
+"3D light pink note" = "3D淡粉色便箋";
 
-"Memory Wall" = "記憶墻";
-"New Memory Wall" = "新的記憶墻";
+"Memory" = "記憶";
+"New Memory" = "新的記憶";
 "Delete" = "刪除";
 
+"'s Momery" = "的記憶";
+
+"Share" = "分享";
+"Share Screenshot" = "分享便箋截圖";

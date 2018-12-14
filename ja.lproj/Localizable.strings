@@ -16,13 +16,11 @@
 "System" = "システム";
 "Language" = "言語";
 "Recycle Bin" = "ゴミ箱";
+"Function" = "ファンクション";
 
-
-"lake" = "湖";
-"sea blue wall" = "海の青い壁";
-"icy glass" = "氷結のガラス";
 "frosty window" = "霧の窓";
 "illustration of leaves" = "木の葉の挿絵";
+"ink" = "インク";
 
 "fine pen handwriting" = "細いペンで手書き";
 "fine pen smooth" = "細いペンで円形のフォント";
@@ -31,8 +29,12 @@
 "3D light yellow note" = "3D淡い黄色の付箋";
 "3D light pink note" = "3D淡いピンクの付箋";
 
-"Memory Wall" = "思い出の壁";
-"New Memory Wall" = "新思い出の壁";
+"Memory" = "思い出";
+"New Memory" = "新思い出";
 "Delete" = "削除";
 
+"'s Momery" = "の思い出";
+
+"Share" = "シェア";
+"Share Screenshot" = "スクリーンショットシェア";
 

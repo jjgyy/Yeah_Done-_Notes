@@ -26,11 +26,15 @@ class RightMenuMainView: UIView {
         var fontConfigurationButton = RightMenuButton(text: NSLocalizedString("Font", comment: "字体"))
         var noteBackgroundConfigurationButton = RightMenuButton(text: NSLocalizedString("Note Style", comment: "便签样式"))
     
+    var functionLabel = RightMenuLabel(text: NSLocalizedString("Function", comment: "功能"))
+        var shareButton = RightMenuButton(text: NSLocalizedString("Share", comment: "分享"))
+        var recycleBinButton = RightMenuButton(text: NSLocalizedString("Recycle Bin", comment: "回收站"))
+        var memoryButton = RightMenuButton(text: NSLocalizedString("Memory", comment: "回忆墙"))
+    
     var systemConfigurationLabel = RightMenuLabel(text: NSLocalizedString("System", comment: "系统"))
         var languageConfigurationButton = RightMenuButton(text: NSLocalizedString("Language", comment: "语言"))
-        var recycleBinButton = RightMenuButton(text: NSLocalizedString("Recycle Bin", comment: "回收站"))
-        var memoryButton = RightMenuButton(text: NSLocalizedString("Memory Wall", comment: "回忆墙"))
-    
+
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,16 +50,21 @@ class RightMenuMainView: UIView {
             addSubview(noteBackgroundConfigurationButton)
             noteBackgroundConfigurationButton.addTarget(self, action: #selector(toNoteBackgroundConfigurationView), for: .touchUpInside)
         
-        addSubview(systemConfigurationLabel)
+        addSubview(functionLabel)
         
-            addSubview(languageConfigurationButton)
-            languageConfigurationButton.addTarget(self, action: #selector(toLanguageConfigurationView), for: .touchUpInside)
+            addSubview(shareButton)
+            shareButton.addTarget(self, action: #selector(toShareView), for: .touchUpInside)
         
             addSubview(recycleBinButton)
             recycleBinButton.addTarget(self, action: #selector(toRecycleBinView), for: .touchUpInside)
         
             addSubview(memoryButton)
             memoryButton.addTarget(self, action: #selector(toMemoryView), for: .touchUpInside)
+        
+        addSubview(systemConfigurationLabel)
+        
+            addSubview(languageConfigurationButton)
+            languageConfigurationButton.addTarget(self, action: #selector(toLanguageConfigurationView), for: .touchUpInside)
         
     }
     required init?(coder aDecoder: NSCoder) {
@@ -74,8 +83,8 @@ class RightMenuMainView: UIView {
         rightMenuView?.toNoteBackgroundConfiguration()
     }
     
-    @objc func toLanguageConfigurationView() {
-        rightMenuView?.toLanguageConfiguration()
+    @objc func toShareView() {
+        rightMenuView?.toShare()
     }
     
     @objc func toRecycleBinView() {
@@ -86,16 +95,22 @@ class RightMenuMainView: UIView {
         rightMenuView?.toMemory()
     }
     
+    @objc func toLanguageConfigurationView() {
+        rightMenuView?.toLanguageConfiguration()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         styleConfigurationLabel.frame = CGRect(x: 10, y: 35, width: bounds.width, height: 50)
             backgroundConfigurationButton.frame = CGRect(x: 0, y: 85, width: bounds.width, height: 45)
             fontConfigurationButton.frame = CGRect(x: 0, y: 130, width: bounds.width, height: 45)
             noteBackgroundConfigurationButton.frame = CGRect(x: 0, y: 175, width: bounds.width, height: 45)
-        systemConfigurationLabel.frame = CGRect(x: 10, y: 230, width: bounds.width, height: 50)
-            languageConfigurationButton.frame = CGRect(x: 0, y: 280, width: bounds.width, height: 45)
+        functionLabel.frame = CGRect(x: 10, y: 230, width: bounds.width, height: 50)
+            shareButton.frame = CGRect(x: 0, y: 280, width: bounds.width, height: 45)
             recycleBinButton.frame = CGRect(x: 0, y: 325, width: bounds.width, height: 45)
             memoryButton.frame = CGRect(x: 0, y: 370, width: bounds.width, height: 45)
+        systemConfigurationLabel.frame = CGRect(x: 10, y: 425, width: bounds.width, height: 50)
+            languageConfigurationButton.frame = CGRect(x: 0, y: 470, width: bounds.width, height: 45)
     }
     
 }

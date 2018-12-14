@@ -16,13 +16,12 @@
 "System" = "System";
 "Language" = "Language";
 "Recycle Bin" = "Recycle Bin";
+"Function" = "Function";
 
 
-"lake" = "lake";
-"sea blue wall" = "sea blue wall";
-"icy glass" = "icy glass";
 "frosty window" = "frosty window";
 "illustration of leaves" = "illustration of leaves";
+"ink" = "ink";
 
 "fine pen handwriting" = "fine pen handwriting";
 "fine pen smooth" = "fine pen smooth";
@@ -31,8 +30,13 @@
 "3D light yellow note" = "3D light yellow note";
 "3D light pink note" = "3D light pink note";
 
-"Memory Wall" = "Memory Wall";
-"New Memory Wall" = "New Memory Wall";
+"Memory" = "Memory";
+"New Memory" = "New Memory";
 "Delete" = "Delete";
+
+"'s Momery" = "'s Momery";
+
+"Share" = "Share";
+"Share Screenshot" = "Share Notes Screenshot";
 
 

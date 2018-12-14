@@ -28,8 +28,6 @@ class WallView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundImageView.contentMode = .scaleToFill
-        coverView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.2)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,6 +39,7 @@ class WallView: UIView {
         addSubview(coverView)
         sendSubviewToBack(backgroundImageView)
         sendSubviewToBack(coverView)
+        backgroundImageView.contentMode = .scaleAspectFill
     }
     
     override func layoutSubviews() {

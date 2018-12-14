@@ -16,13 +16,11 @@
 "System" = "系统";
 "Language" = "语言";
 "Recycle Bin" = "回收站";
+"Function" = "功能";
 
-
-"lake" = "湖水";
-"sea blue wall" = "海蓝色高墙";
-"icy glass" = "结冰的玻璃";
 "frosty window" = "雾窗";
 "illustration of leaves" = "淡雅树叶插画";
+"ink" = "墨水";
 
 "fine pen handwriting" = "细钢笔手写";
 "fine pen smooth" = "细钢笔圆滑";
@@ -31,6 +29,11 @@
 "3D light yellow note" = "3D淡黄色便签";
 "3D light pink note" = "3D淡粉色便签";
 
-"Memory Wall" = "记忆墙";
-"New Memory Wall" = "新的记忆墙";
+"Memory" = "记忆";
+"New Memory" = "新的记忆";
 "Delete" = "删除";
+
+"'s Momery" = "的记忆";
+
+"Share" = "分享";
+"Share Screenshot" = "分享便签截图";

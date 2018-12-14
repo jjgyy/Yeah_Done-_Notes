@@ -10,8 +10,8 @@ import UIKit
 
 class MemoryView: RightMenuBranchView {
 
-    var memoryLabel = RightMenuLabel(text: NSLocalizedString("Memory Wall", comment: "回忆墙"))
-    var newMemoryButton = RightMenuButton(text: "+  " + NSLocalizedString("New Memory Wall", comment: "新的回忆墙"))
+    var memoryLabel = RightMenuLabel(text: NSLocalizedString("Memory", comment: "回忆"))
+    var newMemoryButton = RightMenuButton(text: "+  " + NSLocalizedString("New Memory", comment: "新的回忆"))
     var memoryTable = MemoryTable(memoryTableDatas: [TableData]())
     
     override init(frame: CGRect) {

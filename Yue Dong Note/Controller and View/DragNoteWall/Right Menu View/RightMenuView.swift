@@ -32,9 +32,11 @@ class RightMenuView: UIView {
     var backgroundConfigurationView = BackgroundConfigurationView()
     var fontConfigurationView = FontConfigurationView()
     var noteBackgroundConfigurationView = NoteBackgroundConfigurationView()
-    var languageConfigurationView = LanguageConfigurationView()
+    var shareView = ShareView()
     var recycleBinView = RecycleBinView()
     var memoryView = MemoryView()
+    var languageConfigurationView = LanguageConfigurationView()
+
     
     
     override init(frame: CGRect) {
@@ -47,9 +49,10 @@ class RightMenuView: UIView {
         addSubview(backgroundConfigurationView)
         addSubview(fontConfigurationView)
         addSubview(noteBackgroundConfigurationView)
-        addSubview(languageConfigurationView)
+        addSubview(shareView)
         addSubview(recycleBinView)
         addSubview(memoryView)
+        addSubview(languageConfigurationView)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -75,9 +78,8 @@ class RightMenuView: UIView {
         transitionAnimationFromRight(to: noteBackgroundConfigurationView)
     }
     
-    func toLanguageConfiguration() {
-        languageConfigurationView.languageOptionalTable.markTheCellNeedingMarked()
-        transitionAnimationFromRight(to: languageConfigurationView)
+    func toShare() {
+        transitionAnimationFromRight(to: shareView)
     }
     
     func toRecycleBin() {
@@ -98,6 +100,11 @@ class RightMenuView: UIView {
             memoryView.setNeedsLayout()
         }
         transitionAnimationFromRight(to: memoryView)
+    }
+    
+    func toLanguageConfiguration() {
+        languageConfigurationView.languageOptionalTable.markTheCellNeedingMarked()
+        transitionAnimationFromRight(to: languageConfigurationView)
     }
     
     //-----------------------------------------------------------------------

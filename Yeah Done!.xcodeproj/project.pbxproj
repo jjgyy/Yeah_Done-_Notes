@@ -27,6 +27,7 @@
 		185EF2D621BCE38800D98E29 /* FontOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D521BCE38800D98E29 /* FontOptionalTable.swift */; };
 		185EF2D821BCE40600D98E29 /* RightMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D721BCE40600D98E29 /* RightMenuTable.swift */; };
 		185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2D921BCE5FA00D98E29 /* TableData.swift */; };
+		1868A4AF21C3A7E1009B316F /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868A4AE21C3A7E1009B316F /* ShareView.swift */; };
 		1896068D21BEC3CB00D7504A /* RecycleBinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896068C21BEC3CB00D7504A /* RecycleBinView.swift */; };
 		1896068F21BEC41300D7504A /* RecycleBinTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896068E21BEC41300D7504A /* RecycleBinTable.swift */; };
 		1896069221BEC52800D7504A /* RecycleBin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896069121BEC52800D7504A /* RecycleBin.swift */; };
@@ -75,6 +76,7 @@
 		185EF2D521BCE38800D98E29 /* FontOptionalTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontOptionalTable.swift; sourceTree = "<group>"; };
 		185EF2D721BCE40600D98E29 /* RightMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuTable.swift; sourceTree = "<group>"; };
 		185EF2D921BCE5FA00D98E29 /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
+		1868A4AE21C3A7E1009B316F /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		18807D6B21BE8F830014FA23 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18807D6C21BE8F830014FA23 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18807D6D21BE9B630014FA23 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -203,6 +205,14 @@
 			path = "Font Configuration";
 			sourceTree = "<group>";
 		};
+		1868A4B221C3A7F6009B316F /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				1868A4AE21C3A7E1009B316F /* ShareView.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		1896069021BEC43300D7504A /* Recycle Bin */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +250,7 @@
 				185EF2D721BCE40600D98E29 /* RightMenuTable.swift */,
 				185EF2CB21BC2AD600D98E29 /* Main */,
 				185EF2C421BC262100D98E29 /* Background Configuration */,
+				1868A4B221C3A7F6009B316F /* Share */,
 				185EF2D221BCDB0200D98E29 /* Font Configuration */,
 				18C050CE21BD30B700FCF31A /* Note Background Configuration */,
 				18D1673621BE35DA0052FC07 /* Language Configuration */,
@@ -383,6 +394,7 @@
 				18B287C421B6E4E70059A007 /* Note.swift in Sources */,
 				18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */,
 				18D1673821BE35FE0052FC07 /* LanguageOptionalTable.swift in Sources */,
+				1868A4AF21C3A7E1009B316F /* ShareView.swift in Sources */,
 				1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */,
 				18C050D221BD3C2200FCF31A /* RightMenuLabel.swift in Sources */,
 				1800154C21C266CA008E0652 /* MemoryTable.swift in Sources */,

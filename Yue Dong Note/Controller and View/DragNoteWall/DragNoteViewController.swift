@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 
 class DragNoteViewController: UIViewController {
@@ -146,6 +147,7 @@ class DragNoteViewController: UIViewController {
         AllFont.reload()
         AllNoteBackground.reload()
         AllLanguage.reload()
+        //TODO: reload Social Platform
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.showRightMenuView()
@@ -166,6 +168,32 @@ class DragNoteViewController: UIViewController {
         saveNoteToFileSystem(note: newNote)
     }
     
+    func shareScreenOnSocialPlatform() {
+        UIView.animate(
+            withDuration: 0.2,
+            animations: {
+                self.rootView.rightMenuView.frame.origin.x = self.rootView.bounds.width
+                self.wallView.hideCoverView()
+        }, completion: {_ in
+            self.rootView.rightMenuView.toMain()
+            let image = self.screenShot()
+            let items = [image]
+            let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+            self.present(shareController, animated: true, completion: nil)
+        })
+    }
+    
+    private func screenShot() -> UIImage{
+        let window = UIApplication.shared.keyWindow!
+        UIGraphicsBeginImageContext(window.bounds.size)
+        // 绘图
+        window.drawHierarchy(in: window.bounds, afterScreenUpdates: false)
+        // 从图形上下文获取图片
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
     
     func showRightMenuView() {
         wallView.showCoverView()
@@ -175,7 +203,6 @@ class DragNoteViewController: UIViewController {
     func hideRightMenuView() {
         wallView.hideCoverView()
         rootView.hideRightMenu()
-        rootView.rightMenuView.toMain()
     }
     
     
@@ -323,9 +350,10 @@ class DragNoteViewController: UIViewController {
                         continue
                     }
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    //dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    dateFormatter.dateFormat = "yyyy - MM.dd -"
                     let date = Date(timeIntervalSince1970: timeInterval)
-                    result.append(TableData(uiName: dateFormatter.string(from: date), fileName: content))
+                    result.append(TableData(uiName: dateFormatter.string(from: date) + " " + NSLocalizedString("'s Momery", comment: "的回忆"), fileName: content))
                 }
             }
         }
@@ -344,8 +372,8 @@ class DragNoteViewController: UIViewController {
             if let jsonData = try? Data(contentsOf: url) {
                 if let themeToLoad = Theme(json: jsonData) {
                     theme = themeToLoad
-                    if theme.noteBackgroundTableIndex >= AllWallBackground.allWallBackgrounds.count {
-                        theme.noteBackgroundTableIndex = 0
+                    if theme.noteWallBackgroundTableIndex >= AllWallBackground.allWallBackgrounds.count {
+                        theme.noteWallBackgroundTableIndex = 0
                     }
                     if theme.noteFontTableIndex >= AllFont.allFonts.count {
                         theme.noteFontTableIndex = 0

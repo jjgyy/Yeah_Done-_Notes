@@ -59,9 +59,9 @@ class RootView: UIView {
     }
     
     func hideRightMenu() {
-        UIView.animate(withDuration: 0.2) {
-            self.rightMenuView.frame.origin.x = self.bounds.width
-        }
+        UIView.animate(withDuration: 0.2, animations: {self.rightMenuView.frame.origin.x = self.bounds.width}, completion: {_ in
+            self.rightMenuView.toMain()
+        })
     }
     
     func reloadRightMenu() {

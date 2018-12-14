@@ -21,4 +21,22 @@ class RecycleBinTable: RightMenuTable {
         controller?.createNoteThroughRecycleBinTable(cellIndex: indexPath.row)
     }
 
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return NSLocalizedString("Delete", comment: "删除")
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            controller?.recycleBin.remove(index: indexPath.row)
+            if let newDatas = controller?.recycleBin.toTableDatas() {
+                datas = newDatas
+                reloadData()
+                setNeedsLayout()
+            }
+        }
+    }
+    
 }
