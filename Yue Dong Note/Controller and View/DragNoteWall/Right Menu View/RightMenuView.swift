@@ -95,7 +95,7 @@ class RightMenuView: UIView {
     }
     
     func toMemory() {
-        if let datas = controller?.getNoteWallFileList() {
+        if let datas = controller?.getMemoryFileList() {
             memoryView.memoryTable.removeFromSuperview()
             memoryView.memoryTable = MemoryTable(memoryTableDatas: datas)
             memoryView.addSubview(memoryView.memoryTable)

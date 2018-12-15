@@ -31,11 +31,16 @@ class RecycleBinTable: RightMenuTable {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             controller?.recycleBin.remove(index: indexPath.row)
-            if let newDatas = controller?.recycleBin.toTableDatas() {
-                datas = newDatas
-                reloadData()
-                setNeedsLayout()
-            }
+            controller?.saveRecycleBin()
+            reloadDataAndLayout()
+        }
+    }
+    
+    func reloadDataAndLayout() {
+        if let newDatas = controller?.recycleBin.toTableDatas() {
+            datas = newDatas
+            reloadData()
+            setNeedsLayout()
         }
     }
     

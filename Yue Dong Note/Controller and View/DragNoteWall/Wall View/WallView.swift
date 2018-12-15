@@ -40,6 +40,14 @@ class WallView: UIView {
         sendSubviewToBack(backgroundImageView)
         sendSubviewToBack(coverView)
         backgroundImageView.contentMode = .scaleAspectFill
+        let rightEdgePanGes = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(rightEdgePanAction(_:)))
+        rightEdgePanGes.edges = .right
+        addGestureRecognizer(rightEdgePanGes)
+    }
+    @objc func rightEdgePanAction( _ sender : UIScreenEdgePanGestureRecognizer) {
+        if (sender.state == UIScreenEdgePanGestureRecognizer.State.began) {
+            controller?.showRightMenuView()
+        }
     }
     
     override func layoutSubviews() {

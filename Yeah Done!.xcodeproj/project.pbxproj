@@ -17,6 +17,9 @@
 		1824802821BA397F008EA58C /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802721BA397F008EA58C /* CoverView.swift */; };
 		1824802A21BA3D63008EA58C /* BackgroundOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */; };
 		1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824802B21BA462E008EA58C /* AllWallBackground.swift */; };
+		1838F53021C4D034001F6659 /* EditMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F52F21C4D034001F6659 /* EditMemoryView.swift */; };
+		1838F53321C4D1A9001F6659 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F53221C4D1A9001F6659 /* Memory.swift */; };
+		1838F53521C4EA1B001F6659 /* EditMemoryTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F53421C4EA1B001F6659 /* EditMemoryTextView.swift */; };
 		185EF2C221BC16DB00D98E29 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C121BC16DB00D98E29 /* RootView.swift */; };
 		185EF2C621BC266A00D98E29 /* BackgroundConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */; };
 		185EF2CA21BC2A8100D98E29 /* RightMenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */; };
@@ -68,6 +71,9 @@
 		1824802721BA397F008EA58C /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		1824802921BA3D63008EA58C /* BackgroundOptionalTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOptionalTable.swift; sourceTree = "<group>"; };
 		1824802B21BA462E008EA58C /* AllWallBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWallBackground.swift; sourceTree = "<group>"; };
+		1838F52F21C4D034001F6659 /* EditMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryView.swift; sourceTree = "<group>"; };
+		1838F53221C4D1A9001F6659 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		1838F53421C4EA1B001F6659 /* EditMemoryTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryTextView.swift; sourceTree = "<group>"; };
 		185EF2C121BC16DB00D98E29 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundConfigurationView.swift; sourceTree = "<group>"; };
 		185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuMainView.swift; sourceTree = "<group>"; };
@@ -123,13 +129,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1800154D21C266CE008E0652 /* Memory Wall */ = {
+		1800154D21C266CE008E0652 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
 				1800154921C266BA008E0652 /* MemoryView.swift */,
 				1800154B21C266CA008E0652 /* MemoryTable.swift */,
 			);
-			path = "Memory Wall";
+			path = Memory;
 			sourceTree = "<group>";
 		};
 		180CDFEB21B653C000D8EC17 = {
@@ -171,6 +177,15 @@
 				180CE00021B653C000D8EC17 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1838F53121C4D04A001F6659 /* Edit Memory View */ = {
+			isa = PBXGroup;
+			children = (
+				1838F52F21C4D034001F6659 /* EditMemoryView.swift */,
+				1838F53421C4EA1B001F6659 /* EditMemoryTextView.swift */,
+			);
+			path = "Edit Memory View";
 			sourceTree = "<group>";
 		};
 		185EF2C321BC247400D98E29 /* Wall View */ = {
@@ -268,7 +283,7 @@
 				18C050CE21BD30B700FCF31A /* Note Background Configuration */,
 				18D1673621BE35DA0052FC07 /* Language Configuration */,
 				1896069021BEC43300D7504A /* Recycle Bin */,
-				1800154D21C266CE008E0652 /* Memory Wall */,
+				1800154D21C266CE008E0652 /* Memory */,
 				18B386A621C40A9100790D55 /* About */,
 			);
 			path = "Right Menu View";
@@ -281,6 +296,7 @@
 				185EF2C121BC16DB00D98E29 /* RootView.swift */,
 				185EF2C321BC247400D98E29 /* Wall View */,
 				18D6EEA421BB9EFF00C4C3A5 /* Right Menu View */,
+				1838F53121C4D04A001F6659 /* Edit Memory View */,
 			);
 			path = DragNoteWall;
 			sourceTree = "<group>";
@@ -289,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				18B287C321B6E4E70059A007 /* Note.swift */,
+				1838F53221C4D1A9001F6659 /* Memory.swift */,
 				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
 				18D7E2F021B8F35600C5C966 /* Theme.swift */,
 				1896069121BEC52800D7504A /* RecycleBin.swift */,
@@ -408,6 +425,7 @@
 				18B287C421B6E4E70059A007 /* Note.swift in Sources */,
 				18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */,
 				18D1673821BE35FE0052FC07 /* LanguageOptionalTable.swift in Sources */,
+				1838F53521C4EA1B001F6659 /* EditMemoryTextView.swift in Sources */,
 				1868A4AF21C3A7E1009B316F /* ShareView.swift in Sources */,
 				1824802C21BA462E008EA58C /* AllWallBackground.swift in Sources */,
 				18C050D221BD3C2200FCF31A /* RightMenuLabel.swift in Sources */,
@@ -433,6 +451,8 @@
 				185EF2D421BCE09400D98E29 /* AllFont.swift in Sources */,
 				185EF2D621BCE38800D98E29 /* FontOptionalTable.swift in Sources */,
 				18B386A521C40A8200790D55 /* AboutView.swift in Sources */,
+				1838F53021C4D034001F6659 /* EditMemoryView.swift in Sources */,
+				1838F53321C4D1A9001F6659 /* Memory.swift in Sources */,
 				1824802621BA2289008EA58C /* RightMenuView.swift in Sources */,
 				185EF2DA21BCE5FA00D98E29 /* TableData.swift in Sources */,
 				185EF2D121BCDAFF00D98E29 /* FontConfigurationView.swift in Sources */,

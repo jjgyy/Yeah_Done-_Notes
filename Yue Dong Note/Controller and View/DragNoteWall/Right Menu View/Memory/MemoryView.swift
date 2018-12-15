@@ -28,12 +28,13 @@ class MemoryView: RightMenuBranchView {
     
     
     @objc func newMemory() {
-        controller?.saveNoteWall()
-        if let newDatas = controller?.getNoteWallFileList() {
-            memoryTable.datas = newDatas
-            memoryTable.reloadData()
-            memoryTable.setNeedsLayout()
-        }
+        controller?.addNewMemoryThroughRightMenu()
+//        controller?.saveNoteWall()
+//        if let newDatas = controller?.getNoteWallFileList() {
+//            memoryTable.datas = newDatas
+//            memoryTable.reloadData()
+//            memoryTable.setNeedsLayout()
+//        }
     }
     
     

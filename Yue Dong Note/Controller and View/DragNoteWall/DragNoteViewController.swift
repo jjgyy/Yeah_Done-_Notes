@@ -162,7 +162,10 @@ class DragNoteViewController: UIViewController {
     
     //MARK: 通过回收站创建便签
     func createNoteThroughRecycleBinTable(cellIndex: Int) {
-        let newNote = Note(text: recycleBin.deletedNotes[cellIndex].text, width: recycleBin.deletedNotes[cellIndex].frame.width, height: recycleBin.deletedNotes[cellIndex].frame.height, x: 50, y: 200)
+        let newNote = Note(text: recycleBin.deletedNotes[cellIndex].text, width: recycleBin.deletedNotes[cellIndex].frame.width, height: recycleBin.deletedNotes[cellIndex].frame.height, x: Float(10 + 50.arc4random), y: Float(150 + 200.arc4random))
+        recycleBin.remove(index: cellIndex)
+        saveRecycleBin()
+        rootView.rightMenuView.recycleBinView.recycleBinTable.reloadDataAndLayout()
         
         let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
         wallView.addSubview(newDragNoteView)
@@ -172,6 +175,66 @@ class DragNoteViewController: UIViewController {
         noteWall.add(newNote)
         saveNoteToFileSystem(note: newNote)
     }
+    
+    
+    func addNewMemoryThroughRightMenu() {
+        rootView.editMemoryView.doneButton.isHidden = true
+        rootView.editMemoryView.cancelButton.isHidden = true
+        UIView.animate(
+            withDuration: 0.2,
+            animations: {
+                self.rootView.rightMenuView.frame.origin.x = self.rootView.bounds.width
+                self.wallView.hideCoverView()
+                self.addNewNoteButton.isHidden = true
+        }, completion: {_ in
+            self.rootView.editMemoryView.memoryImageView.frame = self.rootView.bounds
+            self.rootView.editMemoryView.memoryTextView.frame = CGRect(x: 30, y: self.rootView.bounds.height - 150, width: self.rootView.bounds.width - 60, height: 80)
+            let image = self.screenShot()
+            self.rootView.showEditMemoryView(image: image, noteWall: self.noteWall)
+            self.rootView.editMemoryView.memoryTextView.font = UIFont(name: AllFont.allFonts[self.theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[self.theme.noteFontTableIndex]))
+            self.addNewNoteButton.isHidden = false
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+            self.rootView.editMemoryView.memoryTextView.becomeFirstResponder()
+        }
+    }
+    
+    
+    func watchMemoryThroughRightMenu(fileName: String) {
+        let memoryToEdit = getMemory(fileName: fileName)
+        rootView.editMemoryView.doneButton.isHidden = true
+        rootView.editMemoryView.cancelButton.isHidden = true
+        UIView.animate(
+            withDuration: 0.2,
+            animations: {
+                self.rootView.rightMenuView.frame.origin.x = self.rootView.bounds.width
+                self.wallView.hideCoverView()
+        }, completion: {_ in
+            self.rootView.editMemoryView.memoryImageView.frame = self.rootView.bounds
+            self.rootView.editMemoryView.memoryTextView.frame = CGRect(x: 30, y: self.rootView.bounds.height - 150, width: self.rootView.bounds.width - 60, height: 80)
+            self.rootView.showEditMemoryView(memory: memoryToEdit)
+            self.rootView.editMemoryView.memoryTextView.font = UIFont(name: AllFont.allFonts[self.theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[self.theme.noteFontTableIndex]))
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+            self.rootView.editMemoryView.exitEditingCondition()
+        }
+    }
+    
+    //TODO: 这是一个BUG！
+    func reloadMemoryTable() {
+        let datas = getMemoryFileList()
+        rootView.rightMenuView.memoryView.memoryTable.removeFromSuperview()
+        rootView.rightMenuView.memoryView.memoryTable = MemoryTable(memoryTableDatas: datas)
+        rootView.rightMenuView.memoryView.addSubview(rootView.rightMenuView.memoryView.memoryTable)
+        rootView.rightMenuView.memoryView.setNeedsLayout()
+    }
+    
+    func hideEditMemoryView() {
+        rootView.hideEditMemoryView()
+    }
+    
     
     func shareScreenOnSocialPlatform() {
         UIView.animate(
@@ -309,14 +372,14 @@ class DragNoteViewController: UIViewController {
     }
     
     //MARK: 存储回忆墙
-    func saveNoteWall() {
+    func saveMemoryToFileSystem(memory: Memory) {
         if let url = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
-            ).appendingPathComponent("NoteWalls/" + String(Date().timeIntervalSince1970)) {
-            if let json = noteWall.json {
+            ).appendingPathComponent("Memories/" + String(memory.identifier)) {
+            if let json = memory.json {
                 do {
                     try json.write(to: url)
                 } catch let error {
@@ -326,13 +389,13 @@ class DragNoteViewController: UIViewController {
         }
     }
     
-    func deleteNoteWall(fileName: String) {
+    func deleteMemoryFromFileSystem(fileName: String) {
         if let url = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
-            ).appendingPathComponent("NoteWalls/" + fileName) {
+            ).appendingPathComponent("Memories/" + fileName) {
             do {
                 try FileManager.default.removeItem(at: url)
             } catch let error {
@@ -341,15 +404,15 @@ class DragNoteViewController: UIViewController {
         }
     }
     
-    //MARK: 读取回忆墙列表
-    func getNoteWallFileList() -> [TableData] {
+    //MARK: 读取回忆列表
+    func getMemoryFileList() -> [TableData] {
         var result = [TableData]()
         if let dirUrl = try? FileManager.default.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
-            ).appendingPathComponent("NoteWalls") {
+            ).appendingPathComponent("Memories") {
             if let contentsOfPath = try? FileManager.default.contentsOfDirectory(atPath: dirUrl.path) {
                 for content in contentsOfPath {
                     guard let timeInterval = TimeInterval(content) else {
@@ -364,6 +427,24 @@ class DragNoteViewController: UIViewController {
             }
         }
         return result
+    }
+    
+    
+    func getMemory(fileName: String) -> Memory {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("Memories/" + fileName) {
+            if let jsonData = try? Data(contentsOf: url) {
+                if let memoryToLoad = Memory(json: jsonData) {
+                    return memoryToLoad
+                }
+            }
+        }
+        print("Memory File May be Wrong")
+        return Memory()
     }
     
     
@@ -436,10 +517,10 @@ class DragNoteViewController: UIViewController {
             let fileManager = FileManager.default
             try! fileManager.createDirectory(atPath: myDire, withIntermediateDirectories: true, attributes: nil)
         }
-        let pathOfNoteWall = NSHomeDirectory() + "/Documents/NoteWalls"
+        let pathOfNoteWall = NSHomeDirectory() + "/Documents/Memories"
         if !fileManager.fileExists(atPath: pathOfNoteWall) {
-            print("not exist /NoteWalls, try to create it")
-            let myDire: String = NSHomeDirectory() + "/Documents/NoteWalls"
+            print("not exist /Memories, try to create it")
+            let myDire: String = NSHomeDirectory() + "/Documents/Memories"
             let fileManager = FileManager.default
             try! fileManager.createDirectory(atPath: myDire, withIntermediateDirectories: true, attributes: nil)
         }
@@ -462,3 +543,16 @@ extension String {
         return decodedimage
     }
 }
+
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        } else {
+            return 0
+        }
+    }
+}
+

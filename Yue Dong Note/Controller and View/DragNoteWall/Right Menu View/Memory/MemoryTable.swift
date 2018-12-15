@@ -18,7 +18,7 @@ class MemoryTable: RightMenuTable {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        controller?.watchMemoryThroughRightMenu(fileName: datas[indexPath.row].fileName)
     }
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -29,12 +29,16 @@ class MemoryTable: RightMenuTable {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            controller?.deleteNoteWall(fileName: datas[indexPath.row].fileName)
-            if let newDatas = controller?.getNoteWallFileList() {
-                datas = newDatas
-                reloadData()
-                setNeedsLayout()
-            }
+            controller?.deleteMemoryFromFileSystem(fileName: datas[indexPath.row].fileName)
+            reloadDataAndLayout()
+        }
+    }
+    
+    func reloadDataAndLayout() {
+        if let newDatas = controller?.getMemoryFileList() {
+            datas = newDatas
+            reloadData()
+            setNeedsLayout()
         }
     }
     
