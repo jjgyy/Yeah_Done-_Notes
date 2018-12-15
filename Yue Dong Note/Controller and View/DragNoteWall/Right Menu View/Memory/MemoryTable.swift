@@ -31,6 +31,7 @@ class MemoryTable: RightMenuTable {
         if editingStyle == .delete {
             controller?.deleteMemoryFromFileSystem(fileName: datas[indexPath.row].fileName)
             reloadDataAndLayout()
+            (superview as? MemoryView)?.updateCountLabel()
         }
     }
     

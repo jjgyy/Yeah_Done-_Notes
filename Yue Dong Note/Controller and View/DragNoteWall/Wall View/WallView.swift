@@ -12,6 +12,9 @@ class WallView: UIView {
     
     var backgroundImageView = UIImageView()
     var coverView = CoverView()
+    var useMenuGuideLabel = UILabel()
+    var useEditGuideLabel = UILabel()
+    var useAddGuideLabel = UILabel()
     var controller: DragNoteViewController? {
         get {
             for view in sequence(first: self, next: { $0?.superview }) {
@@ -37,6 +40,7 @@ class WallView: UIView {
         super.awakeFromNib()
         addSubview(backgroundImageView)
         addSubview(coverView)
+        configGuideLabel()
         sendSubviewToBack(backgroundImageView)
         sendSubviewToBack(coverView)
         backgroundImageView.contentMode = .scaleAspectFill
@@ -50,10 +54,31 @@ class WallView: UIView {
         }
     }
     
+    private func configGuideLabel() {
+        addSubview(useMenuGuideLabel)
+        useMenuGuideLabel.text = NSLocalizedString("use menu guide", comment: "左滑拉出菜单 ←")
+        useMenuGuideLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        useMenuGuideLabel.isHidden = true
+        addSubview(useEditGuideLabel)
+        useEditGuideLabel.text = NSLocalizedString("use edit guide", comment: "双击或长按 ↑")
+        useEditGuideLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        useEditGuideLabel.isHidden = true
+        addSubview(useAddGuideLabel)
+        useAddGuideLabel.text = NSLocalizedString("use add guide", comment: "点击来新增 ↘")
+        useAddGuideLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        useAddGuideLabel.isHidden = true
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundImageView.frame = bounds
         coverView.frame = bounds
+        useMenuGuideLabel.frame = CGRect(x: bounds.width - 120, y: center.y, width: 140, height: 30)
+        useEditGuideLabel.frame = CGRect(x: bounds.width/2 - 60, y: 380, width: 140, height: 30)
+        if let rootCtrl = controller {
+            useAddGuideLabel.frame = CGRect(x: rootCtrl.addNewNoteButton.frame.origin.x - 75, y: rootCtrl.addNewNoteButton.frame.origin.y - 20, width: 140, height: 30)
+        }
+        //useAddGuideLabel.frame = CGRect(x: bounds.width - 160, y: bounds.height - 130, width: 140, height: 30)
     }
     
     

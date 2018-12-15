@@ -70,6 +70,13 @@ class RootView: UIView {
         })
     }
     
+    func reloadEditMemoryView() {
+        editMemoryView.removeFromSuperview()
+        editMemoryView = EditMemoryView()
+        addSubview(editMemoryView)
+        editMemoryView.isHidden = true
+    }
+    
     
     func showEditMemoryView(image: UIImage, noteWall: NoteWall) {
         editMemoryView.memory = Memory(uiImage: image, intro: "", noteWall: noteWall)

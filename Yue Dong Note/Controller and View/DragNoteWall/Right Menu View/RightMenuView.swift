@@ -101,6 +101,7 @@ class RightMenuView: UIView {
             memoryView.addSubview(memoryView.memoryTable)
             memoryView.setNeedsLayout()
         }
+        memoryView.updateCountLabel()
         transitionAnimationFromRight(to: memoryView)
     }
     
@@ -110,7 +111,7 @@ class RightMenuView: UIView {
     }
     
     func toAbout() {
-        aboutView.updateCreatingNotesNum()
+        aboutView.updateStatistics()
         transitionAnimationFromRight(to: aboutView)
     }
     

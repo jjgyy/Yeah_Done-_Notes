@@ -32,6 +32,8 @@
 
 "3D light yellow note" = "3D淡黃色便箋";
 "3D light pink note" = "3D淡粉色便箋";
+"3D light green note" = "3D淡綠色便箋";
+"3D rice color note" = "3D米色便箋";
 
 "Memory" = "記憶";
 "New Memory" = "新的記憶";
@@ -46,4 +48,10 @@
 "using days" = "與你相伴的日子";
 
 "Statistics" = "统计";
-"creating number" = "寫過的便箋數量";
+"creating number" = "寫便箋的數量";
+"creating memory number" = "寫記憶的數量";
+
+"first launch guide note" = "悅然便簽很高興與妳相遇!\n\nQ&A\n\n1. 如何編輯?\n雙擊便簽或者長按便簽\n\n2. 如何刪除?\n將便簽拖拽至屏幕左下角↙\n\n3. 菜單在哪兒？\n藏在屏幕右側, 試著在右邊緣→把它拽出來吧";
+"use menu guide" = "左滑拉出菜單 ←";
+"use edit guide" = "雙擊或長按 ↑";
+"use add guide" = "點擊來新增 ↘";

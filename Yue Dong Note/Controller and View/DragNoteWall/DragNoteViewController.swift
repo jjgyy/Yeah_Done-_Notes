@@ -16,6 +16,7 @@ class DragNoteViewController: UIViewController {
     var recycleBin = RecycleBin()
     var theme = Theme()
     var creatingNotesNum = 0
+    var creatingMemoryNum = 0
 
     @IBOutlet var rootView: RootView!
         @IBOutlet var wallView: WallView!
@@ -24,6 +25,7 @@ class DragNoteViewController: UIViewController {
     
     //MARK: 新增Note
     @IBAction func addNewNote(_ sender: UIButton) {
+        wallView.useAddGuideLabel.isHidden = true
         addNewNoteButton.isHidden = true
         
         let newNote = Note(text: "", width: 150, height: 200, x: Float(wallView.center.x) - 75, y: Float(wallView.center.y) - 100)
@@ -62,9 +64,12 @@ class DragNoteViewController: UIViewController {
             wallView.addSubview(newDragNoteView)
         }
         
+        checkFirstLaunch()
+        
         loadRecycleBin()
         
         loadCreatingNotesNum()
+        loadCreatingMemoryNum()
 //        for fontFamilyName in UIFont.familyNames{
 //            print("family"+fontFamilyName)
 //            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
@@ -146,13 +151,13 @@ class DragNoteViewController: UIViewController {
     func setLanguageThroughLanguageOptionalTable(cellIndex: Int) {
         UserDefaults.standard.set(String(cellIndex), forKey: "userLanguageTableIndex")
         rootView.reloadRightMenu()
+        rootView.reloadEditMemoryView()
         wallView.hideCoverView()
         
         AllWallBackground.reload()
         AllFont.reload()
         AllNoteBackground.reload()
         AllLanguage.reload()
-        //TODO: reload Social Platform
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.showRightMenuView()
@@ -222,7 +227,7 @@ class DragNoteViewController: UIViewController {
         }
     }
     
-    //TODO: 这是一个BUG！
+    //TODO: 这是为了修复一个系统BUG！
     func reloadMemoryTable() {
         let datas = getMemoryFileList()
         rootView.rightMenuView.memoryView.memoryTable.removeFromSuperview()
@@ -265,6 +270,7 @@ class DragNoteViewController: UIViewController {
 
     
     func showRightMenuView() {
+        wallView.useMenuGuideLabel.isHidden = true
         wallView.showCoverView()
         rootView.showRightMenu()
     }
@@ -505,6 +511,40 @@ class DragNoteViewController: UIViewController {
     func addCreatingNotesNum() {
         creatingNotesNum += 1
         saveCreatingNotesNum()
+    }
+    
+    func loadCreatingMemoryNum() {
+        creatingMemoryNum = UserDefaults.standard.integer(forKey: "creatingMemoryNum")
+    }
+    
+    func saveCreatingMemoryNum() {
+        UserDefaults.standard.set(creatingMemoryNum, forKey: "creatingMemoryNum")
+    }
+    
+    func addCreatingMemoryNum() {
+        creatingMemoryNum += 1
+        saveCreatingMemoryNum()
+    }
+    
+    
+    func checkFirstLaunch() {
+        if (UserDefaults.standard.bool(forKey: "hasFirstLaunched")) {
+            return
+        }
+        
+        let newNote = Note(text: NSLocalizedString("first launch guide note", comment: ""), width: 280, height: 345, x: Float(wallView.center.x) - 145, y: 20)
+        noteWall.add(newNote)
+        saveNoteToFileSystem(note: newNote)
+        
+        let newDragNoteView = DragNoteView(note: newNote, fontName: AllFont.allFonts[theme.noteFontTableIndex].fileName, fontSize: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]), backgroundName: AllNoteBackground.allNoteBackgrounds[theme.noteBackgroundTableIndex].fileName)
+        wallView.addSubview(newDragNoteView)
+        newDragNoteView.textView.font = UIFont(name: AllFont.allFonts[theme.noteFontTableIndex].fileName, size: CGFloat(AllFont.allFontsRelativeSize[theme.noteFontTableIndex]))
+        
+        wallView.useMenuGuideLabel.isHidden = false
+        wallView.useEditGuideLabel.isHidden = false
+        wallView.useAddGuideLabel.isHidden = false
+        
+        UserDefaults.standard.set(true, forKey: "hasFirstLaunched")
     }
     
     

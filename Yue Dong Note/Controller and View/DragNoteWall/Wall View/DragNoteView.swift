@@ -94,12 +94,13 @@ class DragNoteView: UIView {
     //MARK: 添加长按识别器
     func addLongPressGestureRecognizer() {
         let longPressGes = UILongPressGestureRecognizer(target: self, action: #selector(noteLongPressAction(_:)))
-        longPressGes.minimumPressDuration = 1
+        longPressGes.minimumPressDuration = 0.75
         longPressGes.numberOfTouchesRequired = 1
         longPressGes.allowableMovement = 15
         addGestureRecognizer(longPressGes)
     }
     @objc func noteLongPressAction( _ sender : UILongPressGestureRecognizer) {
+        controller?.wallView.useEditGuideLabel.isHidden = true
         removeRedCornerFromSuperView()
         startEditingText()
     }
@@ -111,6 +112,7 @@ class DragNoteView: UIView {
         addGestureRecognizer(twoTapGes)
     }
     @objc func noteTwoTapAction( _ sender : UITapGestureRecognizer) {
+        controller?.wallView.useEditGuideLabel.isHidden = true
         removeRedCornerFromSuperView()
         startEditingText()
     }
@@ -157,9 +159,9 @@ class DragNoteView: UIView {
     
     //MARK: 根据窗口、文字改变label
     func adjustTextLabel() {
-        textLabel.frame.size.width = bounds.width - 36.0
+        textLabel.frame.size.width = bounds.width - 34.0
         textLabel.sizeToFit()
-        if textLabel.frame.origin.y + textLabel.frame.height >= bounds.height {
+        if textLabel.frame.origin.y + textLabel.frame.height >= bounds.height - 20 {
             makeNoteBigger()
         }
     }

@@ -32,6 +32,8 @@
 
 "3D light yellow note" = "3D light yellow note";
 "3D light pink note" = "3D light pink note";
+"3D light green note" = "3D light green note";
+"3D rice color note" = "3D rice color note";
 
 "Memory" = "Memory";
 "New Memory" = "New Memory";
@@ -47,5 +49,10 @@
 
 "Statistics" = "Statistics";
 "creating number" = "Notes Number";
+"creating memory number" = "Memories Number";
 
+"first launch guide note" = "Glad to meet you!\n\nQ&A\n\n1. How to edit note?\ndouble click or long press\n\n2. How to delete note?\ndrag the note to the lower left quarter↙\n\n3. Where is the menu？\nhide at the right → edge of screen, try to drag it out";
+"use menu guide" = "swipe left ←";
+"use edit guide" = "double click ↑";
+"use add guide" = "click it ↘";
 

@@ -32,6 +32,8 @@
 
 "3D light yellow note" = "3D淡黄色便签";
 "3D light pink note" = "3D淡粉色便签";
+"3D light green note" = "3D淡绿色便签";
+"3D rice color note" = "3D米色便签";
 
 "Memory" = "记忆";
 "New Memory" = "新的记忆";
@@ -46,4 +48,10 @@
 "using days" = "与你相伴的日子";
 
 "Statistics" = "统计";
-"creating number" = "写过的便签数量";
+"creating number" = "写便签的数量";
+"creating memory number" = "写记忆的数量";
+
+"first launch guide note" = "悦然便签很高兴与你相遇!\n\nQ&A\n\n1. 如何编辑?\n双击便签或者长按便签\n\n2. 如何删除?\n将便签拖拽至屏幕左下角↙\n\n3. 菜单在哪儿？\n藏在屏幕右侧, 试着在右边缘→把它拽出来吧";
+"use menu guide" = "左滑拉出菜单 ←";
+"use edit guide" = "双击或长按 ↑";
+"use add guide" = "点击来新增 ↘";

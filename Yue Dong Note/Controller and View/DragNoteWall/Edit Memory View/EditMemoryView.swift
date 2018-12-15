@@ -36,9 +36,11 @@ class EditMemoryView: UIView {
         addSubview(memoryImageView)
         addSubview(doneButton)
         doneButton.setTitle(NSLocalizedString("Done", comment: ""), for: .normal)
+        doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         doneButton.addTarget(self, action: #selector(done), for: .touchUpInside)
         addSubview(cancelButton)
         cancelButton.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
+        cancelButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         memoryImageView.contentMode = .scaleAspectFill
     }
@@ -67,6 +69,7 @@ class EditMemoryView: UIView {
             self.controller?.hideEditMemoryView()
             self.controller?.showRightMenuView()
             self.controller?.reloadMemoryTable()
+            self.controller?.rootView.rightMenuView.memoryView.updateCountLabel()
         }
     }
     
