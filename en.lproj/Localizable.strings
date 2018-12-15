@@ -10,6 +10,7 @@
 "Back" = "Back";
 "Cancel" = "Cancel";
 "Done" = "Done";
+"Customize" = "Customize";
 
 "Style" = "Style";
 "Background" = "Background";
@@ -22,13 +23,22 @@
 "Function" = "Function";
 
 
-"frosty window" = "frosty window";
 "illustration of leaves" = "illustration of leaves";
 "ink" = "ink";
+"reticule" = "reticule";
+"colorful furniture" = "colorful furniture";
+"leaves art" = "leaves art";
+
 
 "fine pen handwriting" = "fine pen handwriting";
 "fine pen smooth" = "fine pen smooth";
-"chalk handwriting" = "chalk handwriting";
+"marker pen printed" = "marker pen printed";
+"apple jianfang" = "apple jianfang";
+"bold marker printed" = "bold marker printed";
+"bold marker cute" = "bold marker cute";
+"bold pen handwriting" = "bold pen handwriting";
+"square printed" = "square printed";
+
 
 "3D light yellow note" = "3D light yellow note";
 "3D light pink note" = "3D light pink note";

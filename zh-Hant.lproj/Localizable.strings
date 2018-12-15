@@ -12,6 +12,8 @@
 "Cancel" = "取消";
 "Done" = "完成";
 
+"Customize" = "自定義";
+
 "Style" = "樣式";
 "Background" = "背景";
 "Font" = "字體";
@@ -22,13 +24,21 @@
 "Recycle Bin" = "回收站";
 "Function" = "功能";
 
-"frosty window" = "霧窗";
 "illustration of leaves" = "樹葉插畫";
 "ink" = "墨水";
+"reticule" = "手提袋";
+"colorful furniture" = "多彩家居";
+"leaves art" = "樹葉藝術";
 
 "fine pen handwriting" = "細鋼筆手寫";
 "fine pen smooth" = "細鋼筆圓滑";
-"chalk handwriting" = "粉筆手寫";
+"marker pen printed" = "馬克筆印刷體";
+"apple jianfang" = "蘋果簡方";
+"bold marker printed" = "粗馬克簡黑體";
+"bold marker cute" = "粗馬克跳跳體";
+"bold pen handwriting" = "粗鋼筆手寫";
+"square printed" = "方塊印刷體";
+
 
 "3D light yellow note" = "3D淡黃色便箋";
 "3D light pink note" = "3D淡粉色便箋";
@@ -48,8 +58,8 @@
 "using days" = "與你相伴的日子";
 
 "Statistics" = "统计";
-"creating number" = "寫便箋的數量";
-"creating memory number" = "寫記憶的數量";
+"creating number" = "書寫便箋的次數";
+"creating memory number" = "書寫記憶的次數";
 
 "first launch guide note" = "悅然便簽很高興與妳相遇!\n\nQ&A\n\n1. 如何編輯?\n雙擊便簽或者長按便簽\n\n2. 如何刪除?\n將便簽拖拽至屏幕左下角↙\n\n3. 菜單在哪兒？\n藏在屏幕右側, 試著在右邊緣→把它拽出來吧";
 "use menu guide" = "左滑拉出菜單 ←";

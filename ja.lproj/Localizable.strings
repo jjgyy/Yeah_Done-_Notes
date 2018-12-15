@@ -12,6 +12,8 @@
 "Cancel" = "Cancel";
 "Done" = "完了";
 
+"Customize" = "カスタム";
+
 "Style" = "スタイル";
 "Background" = "壁紙";
 "Font" = "フォント";
@@ -22,13 +24,21 @@
 "Recycle Bin" = "ゴミ箱";
 "Function" = "ファンクション";
 
-"frosty window" = "霧の窓";
 "illustration of leaves" = "木の葉の挿絵";
 "ink" = "インク";
+"reticule" = "ハンドバッグ";
+"colorful furniture" = "多彩な家具";
+"leaves art" = "木の葉芸術";
 
 "fine pen handwriting" = "細いペンで手書き";
 "fine pen smooth" = "細いペンで円形のフォント";
-"chalk handwriting" = "チョークの手書き";
+"marker pen printed" = "マルク印刷体";
+"apple jianfang" = "アップル簡方";
+"bold marker printed" = "マルクペン印刷体";
+"bold marker cute" = "マルクペンかわいい";
+"bold pen handwriting" = "太いペンで手書き";
+"square printed" = "方角印刷体";
+
 
 "3D light yellow note" = "3D淡い黄の付箋";
 "3D light pink note" = "3D淡いピンクの付箋";

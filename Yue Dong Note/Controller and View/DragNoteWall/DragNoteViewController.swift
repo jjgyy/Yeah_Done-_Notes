@@ -10,7 +10,7 @@ import UIKit
 import Social
 
 
-class DragNoteViewController: UIViewController {
+class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var noteWall = NoteWall()
     var recycleBin = RecycleBin()
@@ -89,6 +89,10 @@ class DragNoteViewController: UIViewController {
     
     //MARK: 配置背景
     func configWallViewBackgroundImage() {
+        if theme.noteWallBackgroundTableIndex == -1 {
+            loadCustomizedBackground()
+            return
+        }
         wallView.backgroundImageView.image = UIImage(named: AllWallBackground.allWallBackgrounds[theme.noteWallBackgroundTableIndex].fileName)
 //        let decodedData = NSData(base64Encoded:theme.noteWallBackgroundBase64)
 //        if decodedData != nil {
@@ -281,6 +285,64 @@ class DragNoteViewController: UIViewController {
     }
     
     
+    func pickImageForWallBackground() {
+        hideRightMenuView()
+        let imagePickerCtrl = UIImagePickerController()
+        imagePickerCtrl.sourceType = .photoLibrary
+        imagePickerCtrl.delegate = self
+        present(imagePickerCtrl, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage]
+        wallView.backgroundImageView.image = image as? UIImage
+        rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.indexOfCheckmarkedCell = -1
+        rootView.rightMenuView.backgroundConfigurationView.backgroundOptionalTable.markTheCellNeedingMarked()
+        theme.noteWallBackgroundTableIndex = -1
+        saveTheme()
+        dismiss(animated: true, completion: nil)
+        if image is UIImage {
+            saveCustomizedBackground(image: image as! UIImage)
+        }
+    }
+    
+    
+    func saveCustomizedBackground(image: UIImage) {
+        guard let base64String = image.base64String else {
+            print("can't to base64")
+            return
+        }
+        let customizedImage = CustomizedImage(base64String: base64String)
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("CustomizedBackground.json") {
+            if let json = customizedImage.json {
+                do {
+                    try json.write(to: url)
+                } catch let error {
+                    print("couldn't save \(error)")
+                }
+            }
+        }
+    }
+    
+    func loadCustomizedBackground() {
+        if let url = try? FileManager.default.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+            ).appendingPathComponent("CustomizedBackground.json") {
+            if let jsonData = try? Data(contentsOf: url) {
+                if let customizedBackgroundToLoad = CustomizedImage(json: jsonData) {
+                    wallView.backgroundImageView.image = customizedBackgroundToLoad.uiImage
+                }
+            }
+        }
+    }
     
     //MARK: 读取便签墙
     private func loadAllNotes() {
@@ -532,7 +594,7 @@ class DragNoteViewController: UIViewController {
             return
         }
         
-        let newNote = Note(text: NSLocalizedString("first launch guide note", comment: ""), width: 280, height: 345, x: Float(wallView.center.x) - 145, y: 20)
+        let newNote = Note(text: NSLocalizedString("first launch guide note", comment: ""), width: 280, height: 345, x: Float(wallView.bounds.width)/2 - 140, y: 20)
         noteWall.add(newNote)
         saveNoteToFileSystem(note: newNote)
         

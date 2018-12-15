@@ -20,6 +20,12 @@
 		1838F53021C4D034001F6659 /* EditMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F52F21C4D034001F6659 /* EditMemoryView.swift */; };
 		1838F53321C4D1A9001F6659 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F53221C4D1A9001F6659 /* Memory.swift */; };
 		1838F53521C4EA1B001F6659 /* EditMemoryTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F53421C4EA1B001F6659 /* EditMemoryTextView.swift */; };
+		1838F53921C55983001F6659 /* shuaixian.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1838F53821C55983001F6659 /* shuaixian.TTF */; };
+		1838F53B21C55CE1001F6659 /* mingshang.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1838F53A21C55CE1001F6659 /* mingshang.TTF */; };
+		1838F53F21C56001001F6659 /* jinghei.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1838F53E21C56001001F6659 /* jinghei.TTF */; };
+		1838F54121C56172001F6659 /* tiaotiao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1838F54021C56172001F6659 /* tiaotiao.TTF */; };
+		1838F54321C56298001F6659 /* qiaoqiao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1838F54221C56298001F6659 /* qiaoqiao.TTF */; };
+		1838F54521C57CE6001F6659 /* CustomizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838F54421C57CE6001F6659 /* CustomizedImage.swift */; };
 		185EF2C221BC16DB00D98E29 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C121BC16DB00D98E29 /* RootView.swift */; };
 		185EF2C621BC266A00D98E29 /* BackgroundConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */; };
 		185EF2CA21BC2A8100D98E29 /* RightMenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */; };
@@ -44,15 +50,12 @@
 		18C050D021BD311E00FCF31A /* NoteBackgroundOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C050CF21BD311E00FCF31A /* NoteBackgroundOptionalTable.swift */; };
 		18C050D221BD3C2200FCF31A /* RightMenuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C050D121BD3C2200FCF31A /* RightMenuLabel.swift */; };
 		18C050D721BD5F6200FCF31A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18C050D921BD5F6200FCF31A /* Localizable.strings */; };
-		18C050DC21BD766500FCF31A /* heibanbao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18C050DB21BD766500FCF31A /* heibanbao.TTF */; };
 		18C050DF21BD7D9400FCF31A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18C050E121BD7D9400FCF31A /* InfoPlist.strings */; };
 		18D1673521BE35D60052FC07 /* LanguageConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1673421BE35D60052FC07 /* LanguageConfigurationView.swift */; };
 		18D1673821BE35FE0052FC07 /* LanguageOptionalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1673721BE35FE0052FC07 /* LanguageOptionalTable.swift */; };
 		18D1673A21BE372F0052FC07 /* AllLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D1673921BE372F0052FC07 /* AllLanguage.swift */; };
 		18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2EE21B8048F00C5C966 /* WallView.swift */; };
 		18D7E2F121B8F35600C5C966 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E2F021B8F35600C5C966 /* Theme.swift */; };
-		18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30421B95C3400C5C966 /* xindi.TTF */; };
-		18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30621B95D7B00C5C966 /* myWorld.TTF */; };
 		18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E30821B95F8200C5C966 /* taotao.TTF */; };
 		18DEA53921BFBB6A000A0C65 /* hanyi.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 18DEA53821BFBB6A000A0C65 /* hanyi.TTF */; };
 		18E455EB21B77AEE00C9315D /* NoteWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E455EA21B77AEE00C9315D /* NoteWall.swift */; };
@@ -74,6 +77,12 @@
 		1838F52F21C4D034001F6659 /* EditMemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryView.swift; sourceTree = "<group>"; };
 		1838F53221C4D1A9001F6659 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		1838F53421C4EA1B001F6659 /* EditMemoryTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryTextView.swift; sourceTree = "<group>"; };
+		1838F53821C55983001F6659 /* shuaixian.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = shuaixian.TTF; sourceTree = "<group>"; };
+		1838F53A21C55CE1001F6659 /* mingshang.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = mingshang.TTF; sourceTree = "<group>"; };
+		1838F53E21C56001001F6659 /* jinghei.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = jinghei.TTF; sourceTree = "<group>"; };
+		1838F54021C56172001F6659 /* tiaotiao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = tiaotiao.TTF; sourceTree = "<group>"; };
+		1838F54221C56298001F6659 /* qiaoqiao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = qiaoqiao.TTF; sourceTree = "<group>"; };
+		1838F54421C57CE6001F6659 /* CustomizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedImage.swift; sourceTree = "<group>"; };
 		185EF2C121BC16DB00D98E29 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		185EF2C521BC266A00D98E29 /* BackgroundConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundConfigurationView.swift; sourceTree = "<group>"; };
 		185EF2C921BC2A8100D98E29 /* RightMenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuMainView.swift; sourceTree = "<group>"; };
@@ -103,7 +112,6 @@
 		18C050D121BD3C2200FCF31A /* RightMenuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuLabel.swift; sourceTree = "<group>"; };
 		18C050D821BD5F6200FCF31A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18C050DA21BD5FAD00FCF31A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		18C050DB21BD766500FCF31A /* heibanbao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = heibanbao.TTF; sourceTree = "<group>"; };
 		18C050E021BD7D9400FCF31A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18C050E221BD7D9600FCF31A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		18D1673421BE35D60052FC07 /* LanguageConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageConfigurationView.swift; sourceTree = "<group>"; };
@@ -111,8 +119,6 @@
 		18D1673921BE372F0052FC07 /* AllLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLanguage.swift; sourceTree = "<group>"; };
 		18D7E2EE21B8048F00C5C966 /* WallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
 		18D7E2F021B8F35600C5C966 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		18D7E30421B95C3400C5C966 /* xindi.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = xindi.TTF; sourceTree = "<group>"; };
-		18D7E30621B95D7B00C5C966 /* myWorld.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = myWorld.TTF; sourceTree = "<group>"; };
 		18D7E30821B95F8200C5C966 /* taotao.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = taotao.TTF; sourceTree = "<group>"; };
 		18DEA53821BFBB6A000A0C65 /* hanyi.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = hanyi.TTF; sourceTree = "<group>"; };
 		18E455EA21B77AEE00C9315D /* NoteWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWall.swift; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 				18E455EA21B77AEE00C9315D /* NoteWall.swift */,
 				18D7E2F021B8F35600C5C966 /* Theme.swift */,
 				1896069121BEC52800D7504A /* RecycleBin.swift */,
+				1838F54421C57CE6001F6659 /* CustomizedImage.swift */,
 				185EF2D921BCE5FA00D98E29 /* TableData.swift */,
 				1824802B21BA462E008EA58C /* AllWallBackground.swift */,
 				185EF2D321BCE09400D98E29 /* AllFont.swift */,
@@ -330,10 +337,12 @@
 			isa = PBXGroup;
 			children = (
 				18DEA53821BFBB6A000A0C65 /* hanyi.TTF */,
-				18C050DB21BD766500FCF31A /* heibanbao.TTF */,
 				18D7E30821B95F8200C5C966 /* taotao.TTF */,
-				18D7E30621B95D7B00C5C966 /* myWorld.TTF */,
-				18D7E30421B95C3400C5C966 /* xindi.TTF */,
+				1838F53821C55983001F6659 /* shuaixian.TTF */,
+				1838F53A21C55CE1001F6659 /* mingshang.TTF */,
+				1838F53E21C56001001F6659 /* jinghei.TTF */,
+				1838F54021C56172001F6659 /* tiaotiao.TTF */,
+				1838F54221C56298001F6659 /* qiaoqiao.TTF */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -399,14 +408,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1838F54321C56298001F6659 /* qiaoqiao.TTF in Resources */,
+				1838F53F21C56001001F6659 /* jinghei.TTF in Resources */,
 				180CE00221B653C000D8EC17 /* LaunchScreen.storyboard in Resources */,
-				18D7E30721B95D7B00C5C966 /* myWorld.TTF in Resources */,
-				18C050DC21BD766500FCF31A /* heibanbao.TTF in Resources */,
 				18D7E30921B95F8200C5C966 /* taotao.TTF in Resources */,
+				1838F53921C55983001F6659 /* shuaixian.TTF in Resources */,
 				18DEA53921BFBB6A000A0C65 /* hanyi.TTF in Resources */,
 				18C050D721BD5F6200FCF31A /* Localizable.strings in Resources */,
-				18D7E30521B95C3400C5C966 /* xindi.TTF in Resources */,
+				1838F54121C56172001F6659 /* tiaotiao.TTF in Resources */,
 				180CDFFF21B653C000D8EC17 /* Assets.xcassets in Resources */,
+				1838F53B21C55CE1001F6659 /* mingshang.TTF in Resources */,
 				18C050DF21BD7D9400FCF31A /* InfoPlist.strings in Resources */,
 				180CDFFD21B653C000D8EC17 /* Main.storyboard in Resources */,
 			);
@@ -437,6 +448,7 @@
 				18B287C221B6AC0B0059A007 /* DragNoteView.swift in Sources */,
 				185EF2C221BC16DB00D98E29 /* RootView.swift in Sources */,
 				185EF2CA21BC2A8100D98E29 /* RightMenuMainView.swift in Sources */,
+				1838F54521C57CE6001F6659 /* CustomizedImage.swift in Sources */,
 				180CDFF821B653C000D8EC17 /* AppDelegate.swift in Sources */,
 				18D7E2EF21B8048F00C5C966 /* WallView.swift in Sources */,
 				1824802821BA397F008EA58C /* CoverView.swift in Sources */,

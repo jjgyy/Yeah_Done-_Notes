@@ -27,8 +27,12 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>taotao.TTF</string>
-		<string>heibanbao.TTF</string>
 		<string>hanyi.TTF</string>
+		<string>shuaixian.TTF</string>
+		<string>mingshang.TTF</string>
+		<string>jinghei.TTF</string>
+		<string>tiaotiao.TTF</string>
+		<string>qiaoqiao.TTF</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

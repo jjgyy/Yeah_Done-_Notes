@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jRz-8X-hOy">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,15 @@
             <objects>
                 <viewController id="jRz-8X-hOy" customClass="DragNoteViewController" customModule="Yeah_Done_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M0W-Wr-Ban" customClass="RootView" customModule="Yeah_Done_" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-QC-rUh" customClass="WallView" customModule="Yeah_Done_" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-LO-FZ2">
-                                <rect key="frame" x="329" y="651" width="45" height="45"/>
+                                <rect key="frame" x="329" y="811" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="alh-d0-SEM"/>
                                     <constraint firstAttribute="height" constant="45" id="idc-p6-R6k"/>
@@ -38,7 +38,7 @@
                             <constraint firstItem="Wy3-QC-rUh" firstAttribute="bottom" secondItem="M0W-Wr-Ban" secondAttribute="bottom" id="KQK-st-e50"/>
                             <constraint firstItem="Wy3-QC-rUh" firstAttribute="width" secondItem="M0W-Wr-Ban" secondAttribute="width" id="RO7-44-Rjd"/>
                             <constraint firstItem="Wy3-QC-rUh" firstAttribute="leading" secondItem="HUz-YP-ipm" secondAttribute="leading" id="Xm4-i2-llk"/>
-                            <constraint firstItem="HUz-YP-ipm" firstAttribute="bottom" secondItem="Gw6-LO-FZ2" secondAttribute="bottom" constant="40" id="Y0a-0a-9uw"/>
+                            <constraint firstItem="Wy3-QC-rUh" firstAttribute="bottom" secondItem="Gw6-LO-FZ2" secondAttribute="bottom" constant="40" id="Y0a-0a-9uw"/>
                             <constraint firstItem="HUz-YP-ipm" firstAttribute="trailing" secondItem="Gw6-LO-FZ2" secondAttribute="trailing" constant="40" id="c3A-8q-Oph"/>
                             <constraint firstItem="Wy3-QC-rUh" firstAttribute="height" secondItem="M0W-Wr-Ban" secondAttribute="height" id="nbi-Pf-5rn"/>
                         </constraints>
