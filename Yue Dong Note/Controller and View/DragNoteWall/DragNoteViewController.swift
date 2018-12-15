@@ -594,7 +594,8 @@ class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate,
             return
         }
         
-        let newNote = Note(text: NSLocalizedString("first launch guide note", comment: ""), width: 280, height: 345, x: Float(wallView.bounds.width)/2 - 140, y: 20)
+        let newNote = Note(text: NSLocalizedString("first launch guide note", comment: ""), width: 280, height: 345, x: Float(rootView.bounds.width)/2 - 140, y: 20)
+        print(rootView.bounds)
         noteWall.add(newNote)
         saveNoteToFileSystem(note: newNote)
         
