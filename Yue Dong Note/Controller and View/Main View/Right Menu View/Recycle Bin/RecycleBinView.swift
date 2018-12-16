@@ -27,6 +27,14 @@ class RecycleBinView: RightMenuBranchView {
         super.layoutSubviews()
         recycleBinLabel.frame = CGRect(x: 10.0, y: 100.0, width: bounds.width, height: 50.0)
         recycleBinTable.frame = CGRect(x: 0.0, y: 150.0, width: Double(bounds.width), height: Double(recycleBinTable.datas.count) * 44.0)
+        recycleBinTable.isScrollEnabled = false
+        //适配低分辨率手机
+        if let rootViewHeight = controller?.rootView.bounds.height {
+            if recycleBinTable.frame.origin.y + recycleBinTable.frame.height > rootViewHeight {
+                recycleBinTable.frame.size.height = rootViewHeight - recycleBinTable.frame.origin.y
+                recycleBinTable.isScrollEnabled = true
+            }
+        }
     }
 
 }

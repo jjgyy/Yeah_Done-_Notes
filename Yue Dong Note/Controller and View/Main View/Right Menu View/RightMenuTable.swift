@@ -66,7 +66,6 @@ class RightMenuTable: UITableView, UITableViewDataSource, UITableViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
-        frame.size.height = CGFloat(datas.count * 44)
     }
     
 

@@ -46,6 +46,14 @@ class MemoryView: RightMenuBranchView {
         newMemoryButton.frame = CGRect(x: 0, y: 150, width: bounds.width, height: 45)
         countLabel.frame = CGRect(x: 10, y: 200, width: bounds.width, height: 45)
         memoryTable.frame = CGRect(x: 0.0, y: 245.0, width: Double(bounds.width), height: Double(memoryTable.datas.count) * 44.0)
+        memoryTable.isScrollEnabled = false
+        //适配低分辨率手机
+        if let rootViewHeight = controller?.rootView.bounds.height {
+            if memoryTable.frame.origin.y + memoryTable.frame.height > rootViewHeight {
+                memoryTable.frame.size.height = rootViewHeight - memoryTable.frame.origin.y
+                memoryTable.isScrollEnabled = true
+            }
+        }
     }
 
 }

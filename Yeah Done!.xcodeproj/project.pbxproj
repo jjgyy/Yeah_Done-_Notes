@@ -295,7 +295,7 @@
 			path = "Right Menu View";
 			sourceTree = "<group>";
 		};
-		18D7E2F221B91EAC00C5C966 /* DragNoteWall */ = {
+		18D7E2F221B91EAC00C5C966 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
 				18B287BF21B6ABA80059A007 /* DragNoteViewController.swift */,
@@ -304,7 +304,7 @@
 				18D6EEA421BB9EFF00C4C3A5 /* Right Menu View */,
 				1838F53121C4D04A001F6659 /* Edit Memory View */,
 			);
-			path = DragNoteWall;
+			path = "Main View";
 			sourceTree = "<group>";
 		};
 		18D7E2F321B91EDC00C5C966 /* Model */ = {
@@ -328,7 +328,7 @@
 		18D7E2F921B938A200C5C966 /* Controller and View */ = {
 			isa = PBXGroup;
 			children = (
-				18D7E2F221B91EAC00C5C966 /* DragNoteWall */,
+				18D7E2F221B91EAC00C5C966 /* Main View */,
 			);
 			path = "Controller and View";
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNNNA39DX6;
 				INFOPLIST_FILE = "Yue Dong Note/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +661,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QNNNA39DX6;
 				INFOPLIST_FILE = "Yue Dong Note/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

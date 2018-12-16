@@ -1,25 +1,26 @@
 //
-//  MemoryTable.swift
+//  RecycleBinTable.swift
 //  Yeah Done!
 //
-//  Created by Apple on 2018/12/13.
+//  Created by Apple on 2018/12/10.
 //  Copyright © 2018 Young. All rights reserved.
 //
 
 import UIKit
 
-class MemoryTable: RightMenuTable {
+class RecycleBinTable: RightMenuTable {
 
-    init(memoryTableDatas: [TableData]) {
-        super.init(datas: memoryTableDatas)
+    init(recycleBinTableDatas: [TableData]) {
+        super.init(datas: recycleBinTableDatas)
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        controller?.watchMemoryThroughRightMenu(fileName: datas[indexPath.row].fileName)
+        controller?.createNoteThroughRecycleBinTable(cellIndex: indexPath.row)
     }
+
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -29,20 +30,18 @@ class MemoryTable: RightMenuTable {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            controller?.deleteMemoryFromFileSystem(fileName: datas[indexPath.row].fileName)
+            controller?.recycleBin.remove(index: indexPath.row)
+            controller?.saveRecycleBin()
             reloadDataAndLayout()
-            (superview as? MemoryView)?.updateCountLabel()
         }
     }
     
     func reloadDataAndLayout() {
-        if let newDatas = controller?.getMemoryFileList() {
+        if let newDatas = controller?.recycleBin.toTableDatas() {
             datas = newDatas
             reloadData()
-            setNeedsLayout()
+            superview?.setNeedsLayout()
         }
     }
     
-
-
 }

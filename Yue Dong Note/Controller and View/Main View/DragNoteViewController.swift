@@ -49,7 +49,7 @@ class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         checkFileSystem()
         
         configAddNewNoteButton()
@@ -258,6 +258,12 @@ class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate,
             let items = [image]
             let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
             self.present(shareController, animated: true, completion: nil)
+            //适配IPAD，不然会崩溃
+            let popover = shareController.popoverPresentationController
+            popover?.sourceView = self.rootView
+            popover?.sourceRect = CGRect(x: self.rootView.bounds.width, y: self.rootView.bounds.height/2, width: 0, height: 0)
+            popover?.permittedArrowDirections = UIPopoverArrowDirection.right
+            
             self.addNewNoteButton.isHidden = false
         })
     }
