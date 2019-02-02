@@ -98,7 +98,7 @@ class EditMemoryView: UIView {
     }
     
     func exitEditingCondition() {
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.memoryImageView.frame = CGRect(x: self.bounds.width * 0.15, y: 70, width: self.bounds.width * 0.7, height: self.bounds.height * 0.7)
             self.memoryTextView.frame = CGRect(x: 30, y: self.memoryImageView.frame.origin.y + self.memoryImageView.frame.height + 20, width: self.bounds.width - 60, height: 80)
         }) { _ in

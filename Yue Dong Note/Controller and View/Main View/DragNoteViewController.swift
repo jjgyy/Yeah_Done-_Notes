@@ -205,7 +205,10 @@ class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate,
         })
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
-            self.rootView.editMemoryView.memoryTextView.becomeFirstResponder()
+            let isSuccess = self.rootView.editMemoryView.memoryTextView.becomeFirstResponder()
+            if !isSuccess {
+                print("something error")
+            }
         }
     }
     
@@ -271,7 +274,7 @@ class DragNoteViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func screenShot() -> UIImage{
         let window = UIApplication.shared.keyWindow!
-        UIGraphicsBeginImageContext(window.bounds.size)
+        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
         window.drawHierarchy(in: window.bounds, afterScreenUpdates: false)
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
